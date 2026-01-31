@@ -1,0 +1,84 @@
+@use "./utils" as *;
+
+// viewport
+
+:root {
+  --viewport: 1440;
+
+  @include mobile {
+    --viewport: 375;
+  }
+}
+
+// fonts
+
+:root {
+  --f-roboto: "Roboto";
+  --f-peta-med: "GrtskPeta-Medium";
+  --f-peta-reg: "GrtskPeta-Regular";
+  --f-mono-reg: "IBMPlexMono-Regular";
+  --f-gr-med: "GroteskNormal-Medium";
+}
+
+// transitions
+
+:root {
+  --default-ease: cubic-bezier(0.24, 1, 0.36, 1);
+}
+
+// colors
+
+:root {
+  --c-black: #010101;
+  --c-white: #ffffff;
+
+  /* робимо ч/б замість кольорів */
+  --c-blue: var(--c-black);  // фон/темні секції
+  --c-grey: var(--c-white);  // світлі секції / друга точка градієнта
+
+  --c-red: #ff001b;          // якщо хочеш залишити акцент
+  --c-dark-green: var(--c-black);
+  --c-yellow: var(--c-white);
+  --c-dark-grey: #323232;
+}
+
+
+// z-index
+
+:root {
+  --z-header: 3000;
+  --z-tip: 1500;
+  --z-cookies: 3500;
+  --z-popup: 4000;
+  --z-popup-contact: 5000;
+  --z-preloader: 9000;
+}
+
+// margins
+
+:root {
+  --256: 16rem;
+  --152: 9.5rem;
+  --128: 8rem;
+  --94: 5.875rem;
+  --72: 4.5rem;
+  --60: 3.75rem;
+  --48: 3rem;
+  --40: 2.5rem;
+  --32: 2rem;
+  --24: 1.5rem;
+  --16: 1rem;
+  --12: .75rem;
+  --8: .5rem;
+  --6: .375rem;
+  --4: .25rem;
+  --2: .125rem;
+
+  @include mobile {
+    --256: 9.5rem;
+    --152: 8rem;
+    --128: 4.5rem;
+    --94: 4.5rem;
+    --60: 3.5rem;
+  }
+}

@@ -1,0 +1,195 @@
+/* assets/styles/_general.scss */
+@use "./utils" as *;
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  // -webkit-user-select: none;
+  // -ms-user-select: none;
+  // user-select: none;
+  -webkit-user-drag: none;
+
+  font-family: var(--f-peta-reg);
+  font-size: vw(16);
+  line-height: 128%;
+  letter-spacing: -0.014rem;
+
+  color: var(--c-black);
+  background: var(--c-white); /* ✅ було var(--c-grey) */
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+*,
+*:after,
+*:before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  all: unset;
+  display: block;
+}
+
+button,
+a {
+  all: unset;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+
+  @media (hover: hover) {
+    cursor: pointer;
+  }
+}
+
+// remove input's autofill colors
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.inner-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inner-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Lenis recommended styles
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+// for tip cursor
+[data-area-for-tip] {
+  cursor: pointer;
+}
+
+// swiper nav
+.default-nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.default-button-prev,
+.default-button-next {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--c-dark-grey);
+  box-shadow:
+    0.125rem 0.125rem 0.5563rem 0 rgba(255, 255, 255, 0.15) inset,
+    -0.0625rem -0.125rem 0.1875rem 0 rgba(0, 0, 0, 0.81) inset;
+}
+
+.default-button-prev svg {
+  transform: rotate(180deg);
+}
+
+.default-nav-wrap._grey {
+  --icon-color: var(--c-black);
+}
+
+.default-nav-wrap._grey .default-button-prev,
+.default-nav-wrap._grey .default-button-next {
+  background: #dcdcdc;
+  box-shadow:
+    0.125rem 0.125rem 0.5563rem 0 rgba(255, 255, 255, 0.33) inset,
+    -0.0625rem -0.125rem 0.1875rem 0 rgba(0, 0, 0, 0.21) inset;
+}
+
+/* =========================================================
+   HARD B/W blocks inside ONE mobile section: <section class="info-mob">
+   Children: .wrap, .description, .cube, .vision
+   ========================================================= */
+section.info-mob > .wrap {
+  background: var(--c-black) !important;
+  color: var(--c-white) !important;
+}
+
+section.info-mob > .description {
+  background: var(--c-black) !important;
+  color: var(--c-white) !important;
+}
+
+section.info-mob > .cube {
+  background: var(--c-black) !important;
+  color: var(--c-white) !important;
+}
+
+section.info-mob > .vision {
+  background: var(--c-black) !important;
+  color: var(--c-white) !important;
+}
+/* база */
+html, body {
+  background: var(--c-white) !important;
+}
+.main-page > section.intro {
+  background: var(--c-black) !important;
+  color: var(--c-white) !important;
+}
+section.info-mob > .cube {
+  background: var(--c-black) !important;
+  color: var(--c-white) !important;
+  background-color: transparent !important;
+}

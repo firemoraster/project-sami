@@ -1,0 +1,131 @@
+// common classes for typography like .p1, .p2, .H1, .H2 ...
+@use "./utils" as *;
+
+.h1 {
+  font-size: 24.875rem;
+  font-family: var(--f-roboto);
+  line-height: 82%;
+  letter-spacing: -0.597rem;
+  text-transform: capitalize;
+  font-variation-settings: "wght" 300, "wdth" 50, "grad" 0;
+  font-variant-numeric: lining-nums proportional-nums;
+
+  @include mobile {
+    font-size: 7.0628rem;
+    line-height: 81%;
+    letter-spacing: -0.1695rem;
+  }
+}
+
+.h2 {
+  font-size: 11.9375rem;
+  font-family: var(--f-roboto);
+  line-height: 82%;
+  letter-spacing: -0.2865rem;
+  text-transform: capitalize;
+  font-variation-settings: "wght" 300, "wdth" 50, "grad" 0;
+  font-variant-numeric: lining-nums proportional-nums;
+
+  @include mobile {
+    font-size: 4.0625rem;
+    line-height: 86%;
+    letter-spacing: -0.0975rem;
+  }
+}
+
+.h3 {
+  font-size: 4.6875rem;
+  font-family: var(--f-roboto);
+  line-height: 102%;
+  letter-spacing: -0.0656rem;
+  font-variation-settings: "wght" 300, "wdth" 50, "grad" 0;
+  font-variant-numeric: lining-nums proportional-nums;
+
+  @include mobile {
+    font-size: 2.25rem;
+    line-height: 101%;
+    letter-spacing: -0.0315rem;
+  }
+}
+
+.h4 {
+  font-size: 2.8125rem;
+  line-height: 110%;
+  letter-spacing: -0.1406rem;
+
+  @include mobile {
+    font-size: 1.875rem;
+    line-height: 99%;
+    letter-spacing: -0.0938rem;
+  }
+}
+
+.p1 {
+  font-size: 1.875rem;
+  line-height: 117%;
+  letter-spacing: -0.0825rem;
+
+  @include mobile {
+    font-size: 1.4375rem;
+    line-height: 115%;
+    letter-spacing: -0.0633rem;
+  }
+}
+
+.p2 {
+  font-size: 1.25rem;
+  line-height: 130%;
+  font-family: var(--f-peta-med);
+  letter-spacing: -0.055rem;
+
+  @include mobile {
+    font-size: .9375rem;
+    line-height: 131%;
+    letter-spacing: -0.0413rem;
+  }
+}
+.p3, .p3-bold {
+  font-size: 1rem;
+  line-height: 128%;
+  letter-spacing: -0.014rem;
+
+  @include mobile {
+    font-size: .9375rem;
+    line-height: 131%;
+    letter-spacing: -0.0131rem;
+  }
+}
+.p3-bold {
+  font-family: var(--f-peta-med);
+}
+
+.p4 {
+  font-size: .75rem;
+  line-height: 100%;
+  letter-spacing: -0.0105rem;
+}
+
+.b1, .b2, .b3 {
+  text-transform: uppercase;
+  font-family: var(--f-peta-med);
+  line-height: 100%;
+}
+.b1 {
+  font-size: 1.75rem;
+  letter-spacing: -0.0665rem;
+
+  @include mobile {
+    font-size: 1.125rem;
+    letter-spacing: -0.0428rem;
+  }
+}
+
+.b2 {
+  font-size: .875rem;
+  letter-spacing: -0.042rem;
+}
+
+.b3 {
+  font-size: .75rem;
+  letter-spacing: -0.036rem;
+}
