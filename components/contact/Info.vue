@@ -10,6 +10,15 @@
         <span class="title-col">
           <span class="title-mask">{{ infoData.title[1] }}</span>
         </span>
+        <span class="title-col">
+          <span class="title-mask">{{ infoData.title[2] }}</span>
+        </span>
+        <span class="title-col">
+          <span class="title-mask">{{ infoData.title[3] }}</span>
+        </span>
+        <span class="title-col">
+          <span class="title-mask">{{ infoData.title[4] }}</span>
+        </span>
       </h2>
 
       <h2 v-if="locale === 'ua'" class="title h2">
@@ -56,7 +65,6 @@ onMounted(async () => {
   showFooterAndScaleLogo()
 })
 const moveGradientOnScroll = () => {
-  const gradient = document.querySelector(".contact .info .gradient")
   const tl = gsap.timeline({
     defaults: {
       ease: "none",
@@ -65,18 +73,17 @@ const moveGradientOnScroll = () => {
       scrub: true,
       trigger: ".contact .info",
       start: "top top",
-      end: "bottom bottom"
-    }
-  })
-  gradient && tl.fromTo(gradient, {
-    y: window.innerHeight,
-  }, {
-    y: -(gradient.clientHeight - window.innerHeight)
+      end: "bottom bottom",
+    },
   })
 
-  tl.to(".height-anim", {
-    flex: 0,
-  }, "<")
+  tl.to(
+    ".height-anim",
+    {
+      flex: 0,
+    },
+    "<"
+  )
 }
 
 const showFooterAndScaleLogo = () => {
@@ -88,21 +95,24 @@ const showFooterAndScaleLogo = () => {
       end: "top center",
       scrub: true,
       trigger: ".contact .info .title-trigger",
-    }
+    },
   })
   tl.to("footer.footer .foot", {
     height: "auto",
   })
 
-  tl.to("footer.footer .name", {
-    scaleX: 2.5,
-    scaleY: 3,
-    yPercent: -58
-  }, "<")
+  tl.to(
+    "footer.footer .name",
+    {
+      scaleX: 2.5,
+      scaleY: 3,
+      yPercent: -58,
+    },
+    "<"
+  )
 }
 
 const animateText = () => {
-
   gsap.fromTo(
     ".contact .info .title-mask",
     {
@@ -143,20 +153,7 @@ const animateText = () => {
   padding-bottom: 40vh;
   display: flex;
   flex-direction: column;
-}
-.gradient {
-  height: 200vh;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: linear-gradient(
-    180deg,
-    var(--c-grey) 0%,
-    var(--c-blue) 43%,
-    var(--c-grey) 67%,
-    var(--c-blue) 100%,
-  );
+  background: var(--c-black);
 }
 .title {
   display: flex;
@@ -183,6 +180,7 @@ const animateText = () => {
 }
 .btn-wrap-text {
   width: 30rem;
+  color: white;
 }
 .btn-wrap-text:deep(p) {
   margin-bottom: 1rem;

@@ -20,17 +20,19 @@
           <span class="title-word">
             <span class="title-mask">{{ infoData.title[4] }}</span>
           </span>
+        </span>
+        <span class="title-row">
           <span class="title-word">
             <span class="title-mask">{{ infoData.title[5] }}</span>
           </span>
-        </span>
-        <span class="title-row">
           <span class="title-word">
             <span class="title-mask">{{ infoData.title[6] }}</span>
           </span>
           <span class="title-word">
             <span class="title-mask">{{ infoData.title[7] }}</span>
           </span>
+        </span>
+        <span class="title-row">
           <span class="title-word">
             <span class="title-mask">{{ infoData.title[8] }}</span>
           </span>
@@ -106,12 +108,17 @@
       <p class="p3">{{ infoData.description.text }}</p>
     </div>
 
-    <div class="cube">
-      <p class="b2">{{ infoData.leftTitle }}</p>
-      <div class="cube-container">
-        <IntroCube />
+    <div class="cube-wrap">
+      <div class="cube-text p3">
+        {{ infoData.description.text }}
       </div>
-      <p class="b2">{{ infoData.rightTitle }}</p>
+      <div class="cube">
+        <p class="b2">{{ infoData.leftTitle }}</p>
+        <div class="cube-container">
+          <IntroCube />
+        </div>
+        <p class="b2">{{ infoData.rightTitle }}</p>
+      </div>
     </div>
 
     <div class="vision">
@@ -133,7 +140,11 @@
         <CommonPicture :data="infoData?.photo" />
       </div>
 
-      <div class="scratch" :data-area-for-tip="$t('hold_scratch')" data-tip-coin>
+      <div
+        class="scratch"
+        :data-area-for-tip="$t('hold_scratch')"
+        data-tip-coin
+      >
         <div ref="container" class="scratch-container">
           <canvas ref="canvas" class="scratch-canvas" />
         </div>
@@ -274,7 +285,6 @@ const initErase = () => {
 
   canvas.value.addEventListener("mousedown", startErasing)
 }
-
 </script>
 
 <style scoped lang="scss">
@@ -312,17 +322,17 @@ const initErase = () => {
 }
 .title-word {
   margin-bottom: -2rem;
-  
 }
 .title-mask {
   display: block;
-  
+
   padding-bottom: 2rem;
   padding-top: 0.125rem;
 }
 .description {
   margin-left: 50%;
   width: 17.1875rem;
+  display: none;
 }
 .description p:first-child {
   margin-bottom: var(--16);
@@ -332,9 +342,16 @@ const initErase = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
- margin-left: calc(50% - 50vw); /* 🔥 розтягує на всю ширину */
-  background: var(--c-white); /* ✅ тут білий фон саме з кубика */
+  margin-left: calc(50% - 50vw); /* 🔥 розтягує на всю ширину */
+}
+.cube-wrap {
+  background: var(--c-white);
   color: var(--c-black);
+}
+.cube-text {
+  margin-left: 50%;
+  width: 17.1875rem;
+  padding-top: 6.875rem;
 }
 
 .logo {
@@ -344,11 +361,10 @@ const initErase = () => {
   top: 26.25rem;
 }
 .vision {
- 
   position: relative;
-  padding-bottom: var(--152);
-  
-  background: #003F41;
+  padding-bottom: 55vh;
+
+  background: var(--c-white);
 }
 .title-2 {
   width: 56.4375rem;
@@ -424,10 +440,9 @@ const initErase = () => {
 }
 .info {
   width: 100%;
-background: #000 !important;
-margin-top: -2px;    /* 🔥 перекриє чорну лінію */
+  background: #000 !important;
+  margin-top: -2px; /* 🔥 перекриє чорну лінію */
   padding-top: calc(2.25rem + 2px); /* щоб контент не з’їхав */
-padding: 2.25rem 0 0; /* ✅ без var(--8) */
+  padding: 2.25rem 0 0; /* ✅ без var(--8) */
 }
-
 </style>

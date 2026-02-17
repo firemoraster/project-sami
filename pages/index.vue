@@ -24,19 +24,18 @@
     <section class="works">
       <WorksHero v-if="isDesktop" />
       <WorksHeroMobile v-if="isMobile" />
-
-      <WorksFacts v-if="isDesktop" />
-      <WorksFactsMobile v-if="isMobile" />
-
-      <WorksItems />
     </section>
 
-    <section class="feedback" v-if="isMobile">
-      <FeedbackHero />
-      <FeedbackReviewsMobile />
+    <section class="feedback">
+      <div class="feedback-wrap">
+        <FeedbackHero />
+        <FeedbackReviews v-if="isDesktop" />
+        <FeedbackReviewsMobile v-if="isMobile" />
+      </div>
+      <div class="pocket pocket-1" />
+      <div class="pocket pocket-2" />
     </section>
 
-    
     <section class="contact">
       <ContactInfo v-if="isDesktop" />
       <ContactInfoMobile v-if="isMobile" />
@@ -75,22 +74,31 @@ useSeoMeta(data.value.seo)
 .works {
   background: linear-gradient(var(--c-grey), var(--c-white));
 }
+
 .feedback-wrap {
   overflow: hidden;
 }
 .feedback {
-  padding-bottom: 18rem;
+  padding-bottom: 19.25rem;
   background: var(--c-grey);
   position: relative;
+  background: var(--c-black);
   @include mobile {
     padding-bottom: 0;
     z-index: 3;
   }
 }
-.contact {
-  margin-top: -18rem;
-  @include mobile {
-    margin-top: 0;
-  }
+.pocket {
+  position: absolute;
+  width: 44.25rem;
+  background: #a0c9e9;
+  height: 19.25rem;
+  bottom: 0;
+}
+.pocket-1 {
+  left: 0.5rem;
+}
+.pocket-2 {
+  right: 0.5rem;
 }
 </style>

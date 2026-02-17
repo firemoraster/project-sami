@@ -13,6 +13,7 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
     preloaderInfo2,
     preloaderInfo3,
     preloaderInfo4,
+    Project_data,
 
     seoBlock,
     cubeSides,
@@ -108,14 +109,22 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
           text5: introDescription?.text5 ?? "",
         },
         text: introText ?? "",
-        photo: introPhoto?.data?.attributes?.url ? url + introPhoto.data.attributes.url : "",
-        video: introVideo?.data?.attributes?.url ? url + introVideo.data.attributes.url : "",
+        photo: introPhoto?.data?.attributes?.url
+          ? url + introPhoto.data.attributes.url
+          : "",
+        video: introVideo?.data?.attributes?.url
+          ? url + introVideo.data.attributes.url
+          : "",
       },
 
       info: {
         title: (introTitles ?? []).map((el: any) => el?.text ?? ""),
-        photos: (introPhotos?.data ?? []).map((el: any) => (el?.attributes?.url ? url + el.attributes.url : "")),
-        cube: (cubeSides?.data ?? []).map((el: any) => (el?.attributes?.url ? url + el.attributes.url : "")),
+        photos: (introPhotos?.data ?? []).map((el: any) =>
+          el?.attributes?.url ? url + el.attributes.url : ""
+        ),
+        cube: (cubeSides?.data ?? []).map((el: any) =>
+          el?.attributes?.url ? url + el.attributes.url : ""
+        ),
         description: {
           title: introDescription2?.title ?? "",
           text: introDescription2?.text ?? "",
@@ -124,7 +133,9 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
         rightTitle: rightTitle ?? "",
         description2: introDescription3 ?? "",
         description3: introDescription4 ?? "",
-        photo: introBigPhoto?.data?.attributes?.url ? url + introBigPhoto.data.attributes.url : "",
+        photo: introBigPhoto?.data?.attributes?.url
+          ? url + introBigPhoto.data.attributes.url
+          : "",
         scratchText: scratchText ?? "",
       },
     },
@@ -143,7 +154,9 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
           title: aboutMission?.title ?? "",
           text: aboutMission?.text ?? "",
         },
-        photos: (aboutPhotos?.data ?? []).map((el: any) => (el?.attributes?.url ? url + el.attributes.url : "")),
+        photos: (aboutPhotos?.data ?? []).map((el: any) =>
+          el?.attributes?.url ? url + el.attributes.url : ""
+        ),
       },
 
       team: {
@@ -152,7 +165,9 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
           position: el?.position ?? "",
           description: el?.description ?? "",
           name: el?.name ?? "",
-          face: el?.face?.data?.attributes?.url ? url + el.face.data.attributes.url : "",
+          face: el?.face?.data?.attributes?.url
+            ? url + el.face.data.attributes.url
+            : "",
         })),
       },
     },
@@ -161,7 +176,9 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
       title: servicesTitle ?? "",
       type: (typeService ?? []).map((el: any) => ({
         name: el?.name ?? "",
-        photo: el?.photo?.data?.attributes?.url ? url + el.photo.data.attributes.url : "",
+        photo: el?.photo?.data?.attributes?.url
+          ? url + el.photo.data.attributes.url
+          : "",
         description: el?.description ?? "",
         description2: el?.description2 ?? "",
         subServices: (el?.subServices ?? []).map((item: any) => ({
@@ -178,7 +195,9 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
         description: projectDescription ?? "",
         brands: (workedWith ?? []).map((el: any) => ({
           name: el?.brand ?? "",
-          logo: el?.logo?.data?.attributes?.url ? url + el.logo.data.attributes.url : null,
+          logo: el?.logo?.data?.attributes?.url
+            ? url + el.logo.data.attributes.url
+            : null,
           industry: el?.industry ?? "",
         })),
       },
@@ -188,10 +207,25 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
         text: el?.text ?? "",
       })),
 
+      data: Project_data.map((el: any) => ({
+        name: el.Name,
+        list: el.List.map((l: any) => ({
+          title: l.Title,
+          number1: l.Number1,
+          number2: l.Number2,
+          text1: l.Text1,
+          text2: l.Text2,
+        })),
+      })),
+
       items: (projectItems ?? []).map((el: any) => ({
         id: el?.id,
-        mainPhoto: el?.mainPhoto?.data?.attributes?.url ? url + el.mainPhoto.data.attributes.url : "",
-        brandPhoto: el?.brandPhoto?.data?.attributes?.url ? url + el.brandPhoto.data.attributes.url : null,
+        mainPhoto: el?.mainPhoto?.data?.attributes?.url
+          ? url + el.mainPhoto.data.attributes.url
+          : "",
+        brandPhoto: el?.brandPhoto?.data?.attributes?.url
+          ? url + el.brandPhoto.data.attributes.url
+          : null,
         year: el?.year ?? "",
         title: el?.title ?? "",
         client: el?.client ?? "",
@@ -201,7 +235,9 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
           title: item?.title ?? "",
           description: item?.description ?? "",
         })),
-        gallery: (el?.gallery?.data ?? []).map((item: any) => (item?.attributes?.url ? url + item.attributes.url : "")),
+        gallery: (el?.gallery?.data ?? []).map((item: any) =>
+          item?.attributes?.url ? url + item.attributes.url : ""
+        ),
         results: (el?.results ?? []).map((item: any) => ({
           title: item?.title ?? "",
           subtitle: item?.subtitle ?? "",
@@ -211,17 +247,23 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
         beforeAfter: (el?.beforeAfter ?? []).map((item: any) => ({
           beforeTitle: item?.beforeTitle ?? "",
           beforeDescription: item?.beforeDescription ?? "",
-          beforePhoto: item?.beforePhoto?.data?.attributes?.url ? url + item.beforePhoto.data.attributes.url : "",
+          beforePhoto: item?.beforePhoto?.data?.attributes?.url
+            ? url + item.beforePhoto.data.attributes.url
+            : "",
           afterTitle: item?.afterTitle ?? "",
           afterDescription: item?.afterDescription ?? "",
-          afterPhoto: item?.afterPhoto?.data?.attributes?.url ? url + item.afterPhoto.data.attributes.url : "",
+          afterPhoto: item?.afterPhoto?.data?.attributes?.url
+            ? url + item.afterPhoto.data.attributes.url
+            : "",
         })),
         review: el?.review
           ? {
               text: el?.review?.text ?? "",
               position: el?.review?.position ?? "",
               name: el?.review?.name ?? "",
-              photo: el?.review?.photo?.data?.attributes?.url ? url + el.review.photo.data.attributes.url : "",
+              photo: el?.review?.photo?.data?.attributes?.url
+                ? url + el.review.photo.data.attributes.url
+                : "",
             }
           : undefined,
       })),
@@ -238,7 +280,9 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
           name: el?.name ?? "",
           position: el?.position ?? "",
           description: el?.description ?? "",
-          photo: el?.photo?.data?.attributes?.url ? url + el.photo.data.attributes.url : "",
+          photo: el?.photo?.data?.attributes?.url
+            ? url + el.photo.data.attributes.url
+            : "",
           socials: (el?.socialLink ?? []).map((item: any) => ({
             name: item?.name ?? "",
             link: item?.link ?? "",
@@ -249,7 +293,9 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
           name: el?.name ?? "",
           position: el?.position ?? "",
           description: el?.description ?? "",
-          photo: el?.photo?.data?.attributes?.url ? url + el.photo.data.attributes.url : "",
+          photo: el?.photo?.data?.attributes?.url
+            ? url + el.photo.data.attributes.url
+            : "",
           socials: (el?.socialLink ?? []).map((item: any) => ({
             name: item?.name ?? "",
             link: item?.link ?? "",
@@ -266,11 +312,17 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
 
       form: {
         ourTime: form?.ourTime ?? "",
-        discussOptions: (form?.discussOptions ?? []).map((el: any) => el?.text ?? ""),
-        knowFromOptions: (form?.knowFrom ?? []).map((el: any) => el?.text ?? ""),
+        discussOptions: (form?.discussOptions ?? []).map(
+          (el: any) => el?.text ?? ""
+        ),
+        knowFromOptions: (form?.knowFrom ?? []).map(
+          (el: any) => el?.text ?? ""
+        ),
         person: {
           name: form?.person?.name ?? "",
-          photo: form?.person?.photo?.data?.attributes?.url ? url + form.person.photo.data.attributes.url : "",
+          photo: form?.person?.photo?.data?.attributes?.url
+            ? url + form.person.photo.data.attributes.url
+            : "",
           position: form?.person?.position ?? "",
           encryption: form?.person?.encryption ?? "",
         },
@@ -305,9 +357,15 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
           text: budget?.tip4?.text ?? "",
         },
       },
-      privacy: privacyPolicy?.data?.attributes?.url ? url + privacyPolicy.data.attributes.url : "",
-      terms: termsUse?.data?.attributes?.url ? url + termsUse.data.attributes.url : "",
-      agreement: agreement?.data?.attributes?.url ? url + agreement.data.attributes.url : "",
+      privacy: privacyPolicy?.data?.attributes?.url
+        ? url + privacyPolicy.data.attributes.url
+        : "",
+      terms: termsUse?.data?.attributes?.url
+        ? url + termsUse.data.attributes.url
+        : "",
+      agreement: agreement?.data?.attributes?.url
+        ? url + agreement.data.attributes.url
+        : "",
       email: mail ?? "",
       youtube: youtubeValue,
       instagram: instagram ?? "",

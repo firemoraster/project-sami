@@ -80,11 +80,21 @@ export interface MainPagePure {
         number: string
         text: string
       }
-        preloaderInfo4: {
+      preloaderInfo4: {
         id: number
         number: string
         text: string
       }
+      Project_data: Array<{
+        Name: string
+        List: Array<{
+          Title: string
+          Number1: string
+          Number2: string
+          Text1: string
+          Text2: string
+        }>
+      }>
       introTitles: Array<{
         id: number
         text: string

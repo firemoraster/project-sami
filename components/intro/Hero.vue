@@ -15,7 +15,7 @@
         <span class="col-2">{{ heroData.description.text2 }}</span>
         <span class="col-3">{{ heroData.description.text3 }}</span>
         <span class="col-4">{{ heroData.description.text4 }}</span>
-        <span class="col-5">{{ heroData.description.text5 }}</span>
+        <!-- <span class="col-5">{{ heroData.description.text5 }}</span> -->
       </p>
 
       <p class="description-2 b3">{{ heroData.text }}</p>
@@ -202,7 +202,7 @@ const animateBgGradientOnScroll = () => {
   opacity: 0;
   position: absolute;
   inset: 0;
-  background: #003F41; /* ✅ */
+  background: linear-gradient(180deg, #003F41 44.96%, #000 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -239,14 +239,14 @@ const animateBgGradientOnScroll = () => {
 .description span:nth-child(3) {
   margin-right: 11.1875rem;
 }
-.description span:nth-child(5) {
+.description span:nth-child(4) {
   margin-left: auto;
 }
 .description-2 {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 11.9375rem;
+  width: 26.75rem;
   text-align: center;
   transform: translate(-50%, -50%);
 }

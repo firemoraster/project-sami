@@ -1,27 +1,25 @@
 <template>
   <section class="info">
-    <div class="sticky">
+    <div class="container">
       <p class="title">{{ servicesData.title }}</p>
 
       <div class="blur" @click="closePopup(currentPopupIndex)" />
 
       <div class="popups" />
 
-      <div class="gradients">
+      <!-- <div class="gradients">
         <div class="gradient" />
         <div class="gradient" />
-      </div>
+      </div> -->
 
-      <div class="gradients2">
+      <!-- <div class="gradients2">
         <img src="/images/service-polygon.png" alt="decor" />
         <img src="/images/service-polygon.png" alt="decor" />
-      </div>
+      </div> -->
 
       <div class="items">
         <div v-for="(item, i) in servicesData.type" :key="i" class="item">
-          <p class="count p1">
-            {{ locale === "en" ? "S" : "С" }} {{ i + 1 }}
-          </p>
+          <p class="count p1">{{ locale === "en" ? "S" : "С" }} {{ i + 1 }}</p>
 
           <div class="photo">
             <img class="inner-img" :src="item.photo" alt="service photo" />
@@ -43,7 +41,6 @@
         </div>
       </div>
     </div>
-    <div class="container-scroll-to" />
   </section>
 </template>
 
@@ -59,7 +56,6 @@ onMounted(async () => {
   await nextTick()
 
   animateSectionTransition()
-  animContent()
 })
 const animateSectionTransition = () => {
   sectionTransition({
@@ -69,80 +65,10 @@ const animateSectionTransition = () => {
   })
 }
 
-const animContent = () => {
-  const tl = gsap.timeline({
-    defaults: {
-      ease: "none",
-    },
-    scrollTrigger: {
-      trigger: ".services .info",
-      scrub: true,
-      start: "top top",
-      end: "bottom bottom",
-    },
-  })
-
-  tl.from(".services .gradients, .services .gradients2", {
-    yPercent: 50,
-    duration: 1,
-  })
-
-  tl.to(
-    ".services .title",
-    {
-      yPercent: -120,
-      duration: 0.8,
-    },
-    "<"
-  )
-
-  tl.from(
-    ".services .items",
-    {
-      yPercent: 100,
-      duration: 1,
-    },
-    "<50%"
-  )
-
-  tl.from(
-    ".services .popup",
-    {
-      yPercent: 100,
-      duration: 0.2,
-    },
-    "<80%"
-  )
-
-  tl.to(
-    ".services .gradients2 img",
-    {
-      yPercent: -50,
-      duration: 0.75,
-    },
-    "<50%"
-  )
-  tl.to(
-    ".services .gradients2",
-    {
-      opacity: 0,
-      duration: 0.75,
-    },
-    "<"
-  )
-
-  tl.to(
-    {},
-    {
-      delay: 0.1,
-    }
-  )
-}
-
 const currentPopupIndex = ref(0)
 
 const openPopup = (i: number) => {
-  useScrollTo(".services .info .container-scroll-to", { duration: 0.3 })
+  useScrollTo(".services .info", { duration: 0.3 })
 
   setTimeout(() => {
     useLockScroll(true)
@@ -298,21 +224,16 @@ const closePopup = (i: number) => {
 
 <style scoped lang="scss">
 .info {
-  height: 200vh;
-  background: var(--c-blue);
+  background: #003f41;
+
+  position: relative;
 
   @include mobile {
     display: none;
   }
 }
-.sticky {
-  height: 100vh;
-  overflow: hidden;
-  position: sticky;
+.container {
   padding: var(--24) var(--8) 0;
-  top: 0;
-  left: 0;
-  width: 100%;
 }
 .title {
   color: var(--c-white);
@@ -332,8 +253,8 @@ const closePopup = (i: number) => {
 .items {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  position: absolute;
-  inset: 0;
+  margin-top: 10rem;
+  color: white;
 }
 .item {
   padding-top: var(--72);
@@ -378,7 +299,8 @@ const closePopup = (i: number) => {
   grid-template-columns: 1fr 1fr;
 }
 .gradient:nth-child(1) {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       270deg,
       #82b3d9 0%,
       #bed8ed 8.35%,
@@ -401,7 +323,8 @@ const closePopup = (i: number) => {
     );
 }
 .gradient:nth-child(2) {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       90deg,
       #82b3d9 0%,
       #bed8ed 8.35%,
@@ -454,12 +377,5 @@ const closePopup = (i: number) => {
   backdrop-filter: blur(13px);
   z-index: 3;
   opacity: 0;
-}
-.container-scroll-to {
-  pointer-events: none;
-  height: 100vh;
-  bottom: 0;
-  left: 0;
-  width: 100%;
 }
 </style>

@@ -7,7 +7,10 @@
   line-height: 82%;
   letter-spacing: -0.597rem;
   text-transform: capitalize;
-  font-variation-settings: "wght" 300, "wdth" 50, "grad" 0;
+  font-variation-settings:
+    "wght" 300,
+    "wdth" 50,
+    "grad" 0;
   font-variant-numeric: lining-nums proportional-nums;
 
   @include mobile {
@@ -23,7 +26,10 @@
   line-height: 82%;
   letter-spacing: -0.2865rem;
   text-transform: capitalize;
-  font-variation-settings: "wght" 300, "wdth" 50, "grad" 0;
+  font-variation-settings:
+    "wght" 300,
+    "wdth" 50,
+    "grad" 0;
   font-variant-numeric: lining-nums proportional-nums;
 
   @include mobile {
@@ -38,7 +44,10 @@
   font-family: var(--f-roboto);
   line-height: 102%;
   letter-spacing: -0.0656rem;
-  font-variation-settings: "wght" 300, "wdth" 50, "grad" 0;
+  font-variation-settings:
+    "wght" 300,
+    "wdth" 50,
+    "grad" 0;
   font-variant-numeric: lining-nums proportional-nums;
 
   @include mobile {
@@ -79,18 +88,19 @@
   letter-spacing: -0.055rem;
 
   @include mobile {
-    font-size: .9375rem;
+    font-size: 0.9375rem;
     line-height: 131%;
     letter-spacing: -0.0413rem;
   }
 }
-.p3, .p3-bold {
+.p3,
+.p3-bold {
   font-size: 1rem;
   line-height: 128%;
   letter-spacing: -0.014rem;
 
   @include mobile {
-    font-size: .9375rem;
+    font-size: 0.9375rem;
     line-height: 131%;
     letter-spacing: -0.0131rem;
   }
@@ -100,12 +110,14 @@
 }
 
 .p4 {
-  font-size: .75rem;
+  font-size: 0.75rem;
   line-height: 100%;
   letter-spacing: -0.0105rem;
 }
 
-.b1, .b2, .b3 {
+.b1,
+.b2,
+.b3 {
   text-transform: uppercase;
   font-family: var(--f-peta-med);
   line-height: 100%;
@@ -121,11 +133,11 @@
 }
 
 .b2 {
-  font-size: .875rem;
+  font-size: 0.875rem;
   letter-spacing: -0.042rem;
 }
 
 .b3 {
-  font-size: .75rem;
+  font-size: 0.75rem;
   letter-spacing: -0.036rem;
 }

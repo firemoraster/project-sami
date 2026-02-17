@@ -107,6 +107,16 @@ export interface ProjectsInterface {
       logo: string | null
     }[]
   }
+  data: {
+    name: string
+    list: {
+      title: string
+      number1: string
+      number2: string
+      text2: string
+      text1: string
+    }[]
+  }[]
   facts: {
     number: string
     text: string

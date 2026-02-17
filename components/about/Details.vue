@@ -344,12 +344,23 @@ const animContent = () => {
 <style scoped lang="scss">
 .details {
   padding: var(--24) var(--8) 0;
-  background: var(--c-dark-green);
+  background: #003F41;
   color: var(--c-white);
+  position: relative;
 
   @include mobile {
     display: none;
   }
+}
+.details:after {
+  content: "";
+  position: absolute;
+  height: 50vh;
+  width: 100%;
+  left: 0;
+  bottom: 100%;
+  background: linear-gradient(var(--c-white), #003F41);
+  margin-bottom: -8rem;
 }
 .title {
   font-family: var(--f-roboto);
@@ -365,6 +376,8 @@ const animContent = () => {
   font-size: 13.4761rem;
   letter-spacing: -0.3234rem;
   text-align: center;
+  position: relative;
+  z-index: 4;
 }
 .description {
   margin-left: 50%;

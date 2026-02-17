@@ -2,29 +2,60 @@
   <section class="hero">
     <div class="title">{{ heroData.title }}</div>
 
-    <div class="wrap">
+    <div class="content">
       <div class="left">
-        <p class="p4">{{ heroData.description }}</p>
+        <div class="items">
+          <div
+            v-for="({ name, list }, i) in projectsData"
+            :key="i"
+            class="item"
+          >
+            <p class="item-name p2">{{ name }}</p>
+
+            <div
+              v-for="({ title }, s) in list"
+              :key="s"
+              class="subitem"
+              @mouseenter="activeKey = `${i}-${s}`"
+              @mouseleave="activeKey = null"
+            >
+              <p class="p3">{{ title }}</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="right">
-        <div class="head">
-          <p v-if="hasBrandNames" class="b2">{{ $t("worked_with") }}</p>
-          <p class="b2">{{ $t("industry") }}</p>
-        </div>
-        <div class="body">
-          <div class="line" />
-          <div class="items">
+        <div class="sticky">
+          <div class="stack">
             <div
-              v-for="(brand, i) in heroData.brands"
+              v-for="({ list }, i) in projectsData"
               :key="i"
-              class="item"
-              @mouseenter="onMouseEnter"
-              @mouseleave="onMouseLeave"
+              class="info-wrap"
             >
-              <p v-if="hasBrandNames" class="p3">{{ brand.name }}</p>
-              <p class="p3">{{ brand.industry }}</p>
+              <div
+                v-for="(it, s) in list"
+                :key="`${i}-${s}`"
+                class="info"
+                :class="{ active: activeKey === `${i}-${s}` }"
+              >
+                <div class="info-item">
+                  <div class="mask">
+                    <div class="mask-line info-number">{{ it.number1 }}</div>
+                  </div>
+                  <div class="mask">
+                    <div class="mask-line info-text">{{ it.text1 }}</div>
+                  </div>
+                </div>
 
-              <img v-if="brand.logo" :src="brand.logo" alt="brand logo" />
+                <div class="info-item">
+                  <div class="mask">
+                    <div class="mask-line info-number">{{ it.number2 }}</div>
+                  </div>
+                  <div class="mask">
+                    <div class="mask-line info-text">{{ it.text2 }}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -38,10 +69,9 @@ import type { MainPage } from "@/types/formatted/main-page"
 
 const data = useState<MainPage>("all-data")
 const heroData = data.value.projects.hero
+const projectsData = data.value.projects.data
 
-const hasBrandNames = computed(() =>
-  heroData.brands.some(brand => brand.name)
-)
+const activeKey = ref<string | null>(null)
 
 onMounted(async () => {
   await nextTick()
@@ -55,31 +85,14 @@ const animateSectionTransition = () => {
     trigger: ".works .hero",
   })
 }
-
-
-const onMouseEnter = (event: MouseEvent) => {
-  const line = document.querySelector(".works .hero .line")
-  const target = event.currentTarget as HTMLElement
-  const { offsetTop, offsetHeight } = target
-
-  gsap.to(line, {
-    y: offsetTop,
-    height: offsetHeight,
-  })
-}
-
-const onMouseLeave = () => {
-  const line = document.querySelector(".works .hero .line")
-
-  gsap.to(line, {
-    height: 0,
-  })
-}
 </script>
 
 <style scoped lang="scss">
 .hero {
   padding-top: var(--24);
+  background: var(--c-black);
+  color: var(--c-white);
+  padding-bottom: 7.5rem;
   @include mobile {
     display: none;
   }
@@ -98,64 +111,98 @@ const onMouseLeave = () => {
   white-space: nowrap;
   font-size: 13.625rem;
   letter-spacing: -0.3276rem;
-}
-.wrap {
-  margin-top: var(--72);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.left {
-  padding-left: var(--8);
-}
-.left p {
-  width: 13.625rem;
-  line-height: 130%;
-}
-.head {
-  display: flex;
-  margin-bottom: var(--24);
-}
-.head p:first-child {
-  flex: 0 0 15.0625rem;
+
+  margin-bottom: 7.25rem;
 }
 .item {
-  display: flex;
-  position: relative;
+  margin-bottom: 1.875rem;
+}
+.item-name {
+  color: var(--c-red);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.content {
+  display: grid;
+  grid-template-columns: 25.375rem 1fr;
+  padding: 0 1rem 0 0.5rem;
+}
+.subitem {
   cursor: pointer;
-  padding: var(--2) 0 var(--2) var(--2);
-  z-index: 2;
-}
-.item:not(:last-child) {
-  margin-bottom: var(--4);
-}
-.item p:first-child {
-  flex: 0 0 15.0625rem;
-}
-.item p:nth-child(2) {
-  flex: 1;
-}
-.item img {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: var(--8);
-  width: 6.9375rem;
-  opacity: 0;
+  padding: 0.25rem 0;
+  transition: all 0.4s var(--default-ease);
 }
 @include hover {
-  .item:hover img {
-    opacity: 1;
+  .subitem:hover {
+    background: var(--c-white);
+    color: var(--c-black);
   }
 }
-.body {
-  position: relative;
-}
-.line {
-  position: absolute;
+.sticky {
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  height: 0;
-  background: var(--c-white);
+  padding-top: 2rem;
+}
+.left {
+  padding-top: 2rem;
+}
+
+.stack {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.info {
+  text-align: right;
+}
+.mask {
+  overflow: hidden;
+}
+.mask-line {
+  transform: translateY(110%);
+  transition: transform 1s var(--default-ease);
+  will-change: transform;
+}
+
+.info.active .mask-line {
+  transform: translateY(0);
+}
+
+.info-number {
+  color: var(--c-red);
+  font-family: var(--f-roboto);
+  font-size: 20.25rem;
+  font-weight: 300;
+  font-variation-settings:
+    "wght" 300,
+    "wdth" 50,
+    "grad" 0;
+  line-height: 90%;
+  letter-spacing: -0.486rem;
+  text-transform: capitalize;
+}
+.info-text {
+  font-family: var(--f-peta-med);
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.0522rem;
+  text-transform: uppercase;
+}
+
+.info-wrap {
+  grid-column: 1;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.info {
+  grid-column: 1;
+  grid-row: 1;
 }
 </style>

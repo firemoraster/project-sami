@@ -226,7 +226,6 @@ onMounted(async () => {
 
   useLockScroll(true)
   animOpenPopup()
-
   timestamp.value = userTime.value
 })
 
@@ -303,6 +302,7 @@ const animClosePopup = () => {
   gsap.to(".contact-popup", {
     clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
     duration: 0.75,
+
     onComplete() {
       useLockScroll(false)
       isContactPopupOpen.value = false
@@ -627,7 +627,6 @@ onUnmounted(() => {
 }
 .contact-info {
   margin-top: auto;
-
 
   @include mobile {
     margin-top: 8rem;

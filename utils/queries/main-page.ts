@@ -54,8 +54,17 @@ export const MainPageQuery = stringify(
       preloaderInfo3: {
         fields: ["number", "text"],
       },
-      preloaderInfo4: {          // ✅ ДОДАТИ
+      preloaderInfo4: {
+        // ✅ ДОДАТИ
         fields: ["number", "text"],
+      },
+      Project_data: {
+        fields: ["Name"],
+        populate: {
+          List: {
+            fields: ["Title", "Number1", "Number2", "Text1", "Text2"],
+          },
+        },
       },
       introTitles: {
         fields: ["text"],
@@ -229,7 +238,13 @@ export const MainPageQuery = stringify(
         },
       },
       seoBlock: {
-        fields: ["ogTitle", "ogDescription", "metaTitle", "metaDescription", "keywords"],
+        fields: [
+          "ogTitle",
+          "ogDescription",
+          "metaTitle",
+          "metaDescription",
+          "keywords",
+        ],
         populate: {
           ogImage: {
             fields: ["url"],

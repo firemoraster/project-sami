@@ -2,7 +2,8 @@
   <section class="reviews">
     <div class="block">
       <p class="from b2">
-        <span v-if="locale === 'en'">{{ $t("from") }}</span><br />
+        <span v-if="locale === 'en'">{{ $t("from") }}</span
+        ><br />
         {{ $t("influencers") }}
       </p>
       <div class="items">
@@ -17,7 +18,8 @@
     </div>
     <div class="block">
       <p class="from b2">
-        <span v-if="locale === 'en'">{{ $t("from") }}</span><br />
+        <span v-if="locale === 'en'">{{ $t("from") }}</span
+        ><br />
         {{ $t("brands") }}
       </p>
       <div class="items">
@@ -84,25 +86,19 @@ const initRandomRotationAndPosition = () => {
   gap: var(--8);
   padding-left: var(--8);
   padding-right: var(--8);
-  background: linear-gradient(transparent, #ebebeb);
 
   @include mobile {
     display: none;
   }
 }
 .block {
-  box-shadow:
-    0.0524rem 0.147rem 0.2094rem 0rem rgba(255, 255, 255, 0.6),
-    0.0625rem 0.125rem 0.275rem 0rem rgba(0, 0, 0, 0.1) inset,
-    0.0524rem 0.0875rem 0.0733rem 0rem rgba(0, 0, 0, 0.1) inset;
-  background: #ebebeb;
-  height: 21.4375rem;
+  height: 30rem;
   position: relative;
 }
 .from {
   position: absolute;
   top: var(--16);
-  opacity: 0.3;
+  color: white;
 }
 .block:first-child .from {
   left: var(--16);
