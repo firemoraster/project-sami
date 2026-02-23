@@ -21,6 +21,10 @@
       <ServicesInfoMobile v-if="isMobile" />
     </section>
 
+    <section class="monopoly-sect">
+      <Monopoly />
+    </section>
+
     <section class="works">
       <WorksHero v-if="isDesktop" />
       <WorksHeroMobile v-if="isMobile" />
