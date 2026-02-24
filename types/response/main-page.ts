@@ -104,6 +104,14 @@ export interface MainPagePure {
         title: string
         descr: string
       }>
+      Review_screens: {
+        data: Array<{
+          id: number
+          attributes: {
+            url: string
+          }
+        }>
+      }
       Monopoly_blocks: Array<{
         title: string
         img: string

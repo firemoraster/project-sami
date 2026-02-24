@@ -2,9 +2,9 @@
   <section class="reviews-mobile">
     <div class="screenshots-swiper swiper">
       <div class="swiper-wrapper">
-        <div v-for="(item, i) in reviewsData.brands" :key="i" class="swiper-slide">
+        <div v-for="(img, i) in reviewsData" :key="i" class="swiper-slide">
           <div class="screenshot">
-            <img :src="item.photo" :alt="item.name" />
+            <img :src="img" />
           </div>
         </div>
       </div>
@@ -18,7 +18,7 @@ import "swiper/css"
 import type { MainPage } from "@/types/formatted/main-page"
 
 const data = useState<MainPage>("all-data")
-const reviewsData = data.value.feedback.reviews
+const reviewsData = data.value.feedback.screens
 
 onMounted(async () => {
   await nextTick()
@@ -29,8 +29,7 @@ const initSwiper = () => {
   new Swiper(".screenshots-swiper", {
     loop: true,
     slidesPerView: "auto",
-    centeredSlides: true,
-    spaceBetween: 16,
+    spaceBetween: 8,
   })
 }
 </script>
@@ -40,22 +39,24 @@ const initSwiper = () => {
   display: none;
   background: var(--c-black);
   padding: 2rem 0 4rem;
-  
+
   @include mobile {
     display: block;
   }
 }
 .screenshots-swiper {
   overflow: visible;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .swiper-slide {
   width: auto;
 }
 .screenshot {
-  width: 45vw;
+  width: 17.75rem;
   border-radius: 1.5rem;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 .screenshot img {
   width: 100%;

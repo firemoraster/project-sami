@@ -22,7 +22,8 @@
     </section>
 
     <section class="monopoly-sect">
-      <Monopoly />
+      <MonopolyHero v-if="isDesktop" />
+      <MonopolyHeroMobile v-if="isMobile" />
     </section>
 
     <section class="works">
@@ -98,6 +99,9 @@ useSeoMeta(data.value.seo)
   background: #a0c9e9;
   height: 19.25rem;
   bottom: 0;
+  @include mobile {
+    display: none;
+  }
 }
 .pocket-1 {
   left: 0.5rem;

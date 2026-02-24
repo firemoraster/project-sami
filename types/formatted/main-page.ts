@@ -185,6 +185,7 @@ export interface FeedbackInterface {
       }[]
     }[]
   }
+  screens: string[]
 }
 
 export interface ContactInterface {

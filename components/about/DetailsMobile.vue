@@ -4,11 +4,7 @@
       <div class="title h1">{{ detailsData.title }}</div>
 
       <div class="photo">
-        <img
-          class="inner-img"
-          :src="detailsData.photos[0]"
-          alt="about photo"
-        />
+        <img class="inner-img" :src="detailsData.photos[0]" alt="about photo" />
       </div>
 
       <div class="description">
@@ -202,13 +198,10 @@ const animContentOnScroll = () => {
   })
 
   // Blur з'являється
-  tl.to(
-    ".details-mob .blur",
-    {
-      opacity: 1,
-      duration: 0.3,
-    }
-  )
+  tl.to(".details-mob .blur", {
+    opacity: 1,
+    duration: 0.3,
+  })
 
   // Логотип з'являється з scale: 0 одночасно з blur
   tl.from(
@@ -240,11 +233,10 @@ const animContentOnScroll = () => {
   )
 
   // Контент підіймається
-  tl.to(
-    ".about .details-mob .content", {
-      y: 0,
-      yPercent: 0,
-      duration: 1,
+  tl.to(".about .details-mob .content", {
+    y: 0,
+    yPercent: 0,
+    duration: 1,
   })
 
   // Blur стає темнішим
@@ -352,6 +344,9 @@ const animContentOnScroll = () => {
   transform: translate(-50%, -50%);
   width: 7rem;
   z-index: 10;
+  @include mobile {
+    width: 20rem;
+  }
 }
 .content {
   text-align: center;

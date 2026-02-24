@@ -16,6 +16,7 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
     Project_data,
     Monopoly_blocks,
     Monopoly_facts,
+    Review_screens,
 
     seoBlock,
     cubeSides,
@@ -321,6 +322,9 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
           })),
         })),
       },
+      screens: Review_screens.data?.map((el: any) =>
+        el?.attributes?.url ? url + el.attributes.url : ""
+      ),
     },
 
     contact: {

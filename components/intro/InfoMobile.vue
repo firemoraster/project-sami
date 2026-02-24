@@ -6,8 +6,6 @@
           <span class="title-word">
             <span class="title-mask">{{ infoData.title[0] }}</span>
           </span>
-        </span>
-        <span class="title-row">
           <span class="title-word">
             <span class="title-mask">{{ infoData.title[1] }}</span>
           </span>
@@ -31,8 +29,6 @@
           <span class="title-word">
             <span class="title-mask">{{ infoData.title[5] }}</span>
           </span>
-        </span>
-        <span class="title-row">
           <span class="title-word">
             <span class="title-mask">{{ infoData.title[6] }}</span>
           </span>
@@ -54,9 +50,7 @@
           <span class="title-word">
             <span class="title-mask">{{ infoData.title[9] }}</span>
           </span>
-        </span>
 
-        <span class="title-row">
           <span class="title-word">
             <span class="title-mask">{{ infoData.title[10] }}</span>
           </span>
@@ -119,25 +113,14 @@
             <span class="title-mask">{{ infoData.title[10] }}</span>
           </span>
         </span>
-
       </h2>
 
-      <div class="video-player">
-        <div class="video-frame">
-          <img :src="heroData.photo" alt="Video thumbnail" />
-          <button class="video-play-btn" @click="isVideoPopupOpen = true">
-            <svg
-              viewBox="0 0 12 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 8L6.99382e-07 -5.24537e-07L0 16L12 8Z"
-                fill="#FF001B"
-              />
-            </svg>
-          </button>
-        </div>
+      <div class="photo-1">
+        <CommonPicture :data="infoData.photos[0]" />
+      </div>
+
+      <div class="photo-2">
+        <CommonPicture :data="infoData.photos[1]" />
       </div>
 
       <div class="logo">
@@ -201,6 +184,20 @@ const { locale } = useI18n()
   @include mobile {
     display: block;
   }
+}
+
+.photo-1 {
+  position: absolute;
+  width: 7rem;
+  right: 0;
+  top: 6rem;
+}
+.photo-2 {
+  position: absolute;
+  width: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 29rem;
 }
 .wrap {
   position: relative;

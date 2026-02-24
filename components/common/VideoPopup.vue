@@ -17,6 +17,8 @@ const videoData = data.value.intro.hero.video
 const isVideoPopupOpen = useState<boolean>("is-video-popup-open")
 
 onMounted(() => {
+  console.log(videoData)
+
   useLockScroll(true)
   gsap.to(".video-popup", {
     opacity: 1,

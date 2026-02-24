@@ -35,10 +35,9 @@
             {{ heroData.subtitle.text3 }} {{ heroData.subtitle.text4 }}
           </p>
 
-
           <div class="video">
-            <!-- @click="isVideoPopupOpen = true" -->
-            <!-- <button class="video-btn">
+            <!--  -->
+            <button class="video-btn" @click="isVideoPopupOpen = true">
               <svg
                 viewBox="0 0 12 16"
                 fill="none"
@@ -49,7 +48,7 @@
                   fill="#FF001B"
                 />
               </svg>
-            </button> -->
+            </button>
 
             <div class="video-poster">
               <img class="inner-img" :src="heroData.photo" alt="hero photo" />
@@ -91,7 +90,9 @@ const setHeight = () => {
     "section.intro .hero-mob .name"
   ) as SVGSVGElement
 
-  const firstScreen = document.querySelector("section.intro .hero-mob .first-screen")
+  const firstScreen = document.querySelector(
+    "section.intro .hero-mob .first-screen"
+  )
 
   const initialHeight = nameElement.getBBox().height
   const maxScale = window.innerHeight / initialHeight
@@ -101,7 +102,7 @@ const setHeight = () => {
   })
 
   gsap.set(nameElement, {
-    scaleY: maxScale - 0.12
+    scaleY: maxScale - 0.12,
   })
 }
 </script>

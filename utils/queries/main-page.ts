@@ -69,6 +69,9 @@ export const MainPageQuery = stringify(
       Monopoly_facts: {
         fields: ["title", "descr"],
       },
+      Review_screens: {
+        fields: ["url"],
+      },
       Monopoly_blocks: {
         fields: ["title"],
         populate: {

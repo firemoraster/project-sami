@@ -81,7 +81,7 @@ const animateSectionTransition = () => {
   margin: var(--152) auto 0;
 
   @include mobile {
-    margin: 2rem auto 0;
+    margin: 8rem auto 0;
   }
 }
 .description svg {

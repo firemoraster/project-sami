@@ -292,6 +292,9 @@ const activeKey2 = ref<number | null>(null)
   background: #000;
   padding: 0.5rem 0.5rem 21rem;
   position: relative;
+  @include mobile {
+    display: none;
+  }
 }
 .board-wrap {
   position: relative;

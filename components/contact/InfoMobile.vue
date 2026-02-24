@@ -5,14 +5,21 @@
     <h2 class="title h2">
       <span class="title-row">
         <span class="title-word">
-          <span class="title-mask"
-            >{{ infoData.title[0] }}</span
-          >
+          <span class="title-mask">{{ infoData.title[0] }}</span>
         </span>
         <span class="title-word">
-          <span class="title-mask"
-            >{{ infoData.title[1] }}</span
-          >
+          <span class="title-mask">{{ infoData.title[1] }}</span>
+        </span>
+        <span class="title-word">
+          <span class="title-mask">{{ infoData.title[2] }}</span>
+        </span>
+      </span>
+      <span class="title-row">
+        <span class="title-word">
+          <span class="title-mask">{{ infoData.title[3] }}</span>
+        </span>
+        <span class="title-word">
+          <span class="title-mask">{{ infoData.title[4] }}</span>
         </span>
       </span>
     </h2>
@@ -79,7 +86,7 @@ const showFooter = () => {
   @include mobile {
     position: relative;
     display: block;
-    padding: 16rem 1rem 25rem;
+    padding: 5rem 1rem 25rem;
     background: var(--c-black);
   }
 }
