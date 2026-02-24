@@ -212,6 +212,21 @@ export interface ContactInterface {
   }
 }
 
+export interface MonopolyInterface {
+  facts: {
+    title: string
+    descr: string
+  }[]
+  blocks: {
+    title: string
+    img: string
+    details: {
+      number: string
+      text: string
+    }[]
+  }[]
+}
+
 export interface FooterInterface {
   budget: {
     perMilliseconds: string
@@ -248,6 +263,7 @@ export interface MainPage {
   intro: IntroInterface
   about: AboutInterface
   services: ServicesInterface
+  monopoly: MonopolyInterface
   projects: ProjectsInterface
   feedback: FeedbackInterface
   contact: ContactInterface

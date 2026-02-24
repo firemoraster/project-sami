@@ -66,6 +66,20 @@ export const MainPageQuery = stringify(
           },
         },
       },
+      Monopoly_facts: {
+        fields: ["title", "descr"],
+      },
+      Monopoly_blocks: {
+        fields: ["title"],
+        populate: {
+          img: {
+            fields: ["url"],
+          },
+          details: {
+            fields: ["number", "text"],
+          },
+        },
+      },
       introTitles: {
         fields: ["text"],
       },

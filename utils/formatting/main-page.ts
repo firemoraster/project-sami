@@ -14,6 +14,8 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
     preloaderInfo3,
     preloaderInfo4,
     Project_data,
+    Monopoly_blocks,
+    Monopoly_facts,
 
     seoBlock,
     cubeSides,
@@ -185,6 +187,23 @@ export function formattingMainPage({ data }: MainPagePure): MainPage {
           name: item?.name ?? "",
           description: item?.description ?? "",
           mark: item?.mark,
+        })),
+      })),
+    },
+
+    monopoly: {
+      facts: Monopoly_facts.map((el: any) => ({
+        title: el.title,
+        descr: el.descr,
+      })),
+      blocks: Monopoly_blocks.map((el: any) => ({
+        title: el.title,
+        img: el?.img?.data?.attributes?.url
+          ? url + el.img.data.attributes.url
+          : "",
+        details: el?.details.map((det: any) => ({
+          number: det?.number,
+          text: det?.text,
         })),
       })),
     },

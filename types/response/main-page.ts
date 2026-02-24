@@ -87,13 +87,26 @@ export interface MainPagePure {
       }
       Project_data: Array<{
         Name: string
-        List: Array<{
-          Title: string
-          Number1: string
-          Number2: string
-          Text1: string
-          Text2: string
+        img: {
+          data: {
+            id: number
+            attributes: {
+              url: string
+            }
+          }
+        }
+        details: Array<{
+          number: string
+          text: string
         }>
+      }>
+      Monopoly_facts: Array<{
+        title: string
+        descr: string
+      }>
+      Monopoly_blocks: Array<{
+        title: string
+        img: string
       }>
       introTitles: Array<{
         id: number

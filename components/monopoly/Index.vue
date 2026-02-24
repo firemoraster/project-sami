@@ -1,151 +1,276 @@
 <template>
   <section class="board">
-    <div class="board-inner">
-      <!-- TOP -->
-      <div class="side top">
-        <div class="corner corner--start">
-          <div class="corner-text p2">
-            <div>free</div>
-            <div>space</div>
+    <IconMonopolyDecor class="monopoly-decor" />
+
+    <div class="board-wrap">
+      <div class="board-inner">
+        <IconMonopolyLogo class="monopoly-logo" />
+        <!-- TOP -->
+        <div class="side top">
+          <div class="corner corner--start">
+            <div class="corner-text p2">
+              <div>free</div>
+              <div>space</div>
+            </div>
+          </div>
+          <div
+            class="cell question-cell"
+            @mouseenter="activeKey2 = 2"
+            @mouseleave="activeKey2 = null"
+          >
+            <div class="question-text">?</div>
+          </div>
+          <!-- country 6 -->
+          <div
+            class="cell country-cell"
+            @mouseenter="activeKey = 6"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[6].img" />
+              <p class="country-name">{{ monopoly.blocks[6].title }}</p>
+            </div>
+          </div>
+
+          <div class="cell logo-cell">
+            <div class="logo-icon">
+              <IconLogo />
+            </div>
+          </div>
+
+          <!-- country 7 -->
+          <div
+            class="cell country-cell"
+            @mouseenter="activeKey = 7"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[7].img" />
+              <p class="country-name">{{ monopoly.blocks[7].title }}</p>
+            </div>
+          </div>
+
+          <!-- country 8 -->
+          <div
+            class="cell country-cell"
+            @mouseenter="activeKey = 8"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[8].img" />
+              <p class="country-name">{{ monopoly.blocks[8].title }}</p>
+            </div>
+          </div>
+          <div class="corner corner--end">
+            <div class="corner-text p2">
+              <div>free</div>
+              <div>parking</div>
+            </div>
           </div>
         </div>
-        <div class="cell question-cell">
-          <div class="question-text">?</div>
-        </div>
-        <div class="cell country-cell">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[0].img" />
-            <p class="country-name">{{ monopoly.blocks[0].title }}</p>
+
+        <!-- RIGHT -->
+        <div class="side right">
+          <div
+            class="cell question-cell"
+            @mouseenter="activeKey2 = 3"
+            @mouseleave="activeKey2 = null"
+          >
+            <div class="question-text">?</div>
+          </div>
+
+          <!-- country 9 -->
+          <div
+            class="cell country-cell"
+            @mouseenter="activeKey = 9"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[9].img" />
+              <p class="country-name">{{ monopoly.blocks[9].title }}</p>
+            </div>
+          </div>
+
+          <!-- country 10 -->
+          <div
+            class="cell country-cell"
+            @mouseenter="activeKey = 10"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[10].img" />
+              <p class="country-name">{{ monopoly.blocks[10].title }}</p>
+            </div>
+          </div>
+          <div class="cell logo-cell">
+            <div class="logo-icon">
+              <IconLogo />
+            </div>
+          </div>
+
+          <!-- country 11 -->
+          <div
+            class="cell country-cell"
+            @mouseenter="activeKey = 11"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[11].img" />
+              <p class="country-name">{{ monopoly.blocks[11].title }}</p>
+            </div>
           </div>
         </div>
-        <div class="cell logo-cell">
-          <div class="logo-icon">
-            <IconLogo />
+
+        <!-- BOTTOM -->
+        <div class="side bottom">
+          <div class="corner corner--start">
+            <div class="corner-text p2">
+              <div>break</div>
+              <div>time</div>
+            </div>
+          </div>
+
+          <div
+            class="cell question-cell"
+            @mouseenter="activeKey2 = 0"
+            @mouseleave="activeKey2 = null"
+          >
+            <div class="question-text">?</div>
+          </div>
+
+          <!-- country 2 -->
+          <div
+            class="cell country-cell c1"
+            @mouseenter="activeKey = 2"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[2].img" />
+              <p class="country-name">{{ monopoly.blocks[2].title }}</p>
+            </div>
+          </div>
+          <div class="cell logo-cell">
+            <div class="logo-icon">
+              <IconName />
+            </div>
+          </div>
+
+          <!-- country 1 -->
+          <div
+            class="cell country-cell c2"
+            @mouseenter="activeKey = 1"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[1].img" />
+              <p class="country-name">{{ monopoly.blocks[1].title }}</p>
+            </div>
+          </div>
+
+          <!-- country 0 -->
+          <div
+            class="cell country-cell"
+            @mouseenter="activeKey = 0"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[0].img" />
+              <p class="country-name">{{ monopoly.blocks[0].title }}</p>
+            </div>
+          </div>
+          <div class="corner corner--end">
+            <div class="corner-text">
+              <div>GO</div>
+            </div>
+            <IconLongArrow class="corner-arrow" />
           </div>
         </div>
-        <div class="cell country-cell">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[1].img" />
-            <p class="country-name">{{ monopoly.blocks[1].title }}</p>
+
+        <!-- LEFT -->
+        <div class="side left">
+          <!-- country 5 -->
+          <div
+            class="cell country-cell"
+            @mouseenter="activeKey = 5"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[5].img" />
+              <p class="country-name">{{ monopoly.blocks[5].title }}</p>
+            </div>
           </div>
-        </div>
-        <div class="cell country-cell">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[2].img" />
-            <p class="country-name">{{ monopoly.blocks[2].title }}</p>
+
+          <!-- country 4 -->
+          <div
+            class="cell country-cell"
+            @mouseenter="activeKey = 4"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[4].img" />
+              <p class="country-name">{{ monopoly.blocks[4].title }}</p>
+            </div>
           </div>
-        </div>
-        <div class="corner corner--end">
-          <div class="corner-text p2">
-            <div>free</div>
-            <div>parking</div>
+
+          <div
+            class="cell question-cell"
+            @mouseenter="activeKey2 = 1"
+            @mouseleave="activeKey2 = null"
+          >
+            <div class="question-text">?</div>
+          </div>
+
+          <!-- country 3 -->
+          <div
+            class="cell country-cell"
+            @mouseenter="activeKey = 3"
+            @mouseleave="activeKey = null"
+          >
+            <div class="country-content">
+              <img class="country-flag" :src="monopoly.blocks[3].img" />
+              <p class="country-name">{{ monopoly.blocks[3].title }}</p>
+            </div>
+          </div>
+
+          <div class="cell logo-cell">
+            <div class="logo-icon">
+              <IconLogo />
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- RIGHT -->
-      <div class="side right">
-        <div class="cell question-cell">
-          <div class="question-text">?</div>
-        </div>
-        <div class="cell country-cell">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[3].img" />
-            <p class="country-name">{{ monopoly.blocks[3].title }}</p>
-          </div>
-        </div>
-        <div class="cell country-cell">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[4].img" />
-            <p class="country-name">{{ monopoly.blocks[4].title }}</p>
-          </div>
-        </div>
-        <div class="cell logo-cell">
-          <div class="logo-icon">
-            <IconLogo />
-          </div>
-        </div>
-
-        <div class="cell country-cell">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[5].img" />
-            <p class="country-name">{{ monopoly.blocks[5].title }}</p>
+      <div class="details">
+        <div
+          v-for="({ details }, i) in monopoly.blocks"
+          :key="i"
+          class="info"
+          :class="{ active: activeKey === i }"
+        >
+          <div
+            v-for="({ number, text }, d) in details"
+            :key="d"
+            class="info-item"
+          >
+            <div class="mask">
+              <div class="mask-line info-number">{{ number }}</div>
+            </div>
+            <div class="mask">
+              <div class="mask-line info-text">{{ text }}</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- BOTTOM -->
-      <div class="side bottom">
-        <div class="corner corner--start">
-          <div class="corner-text p2">
-            <div>break</div>
-            <div>time</div>
-          </div>
-        </div>
-        <div class="cell question-cell">
-          <div class="question-text">?</div>
-        </div>
-        <div class="cell country-cell c1">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[0].img" />
-            <p class="country-name">{{ monopoly.blocks[0].title }}</p>
-          </div>
-        </div>
-        <div class="cell logo-cell">
-          <div class="logo-icon">
-            <IconName />
-          </div>
-        </div>
-        <div class="cell country-cell c2">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[1].img" />
-            <p class="country-name">{{ monopoly.blocks[1].title }}</p>
-          </div>
-        </div>
-        <div class="cell country-cell">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[2].img" />
-            <p class="country-name">{{ monopoly.blocks[2].title }}</p>
-          </div>
-        </div>
-        <div class="corner corner--end">
-          <div class="corner-text">
-            <div>GO</div>
-          </div>
-          <IconLongArrow class="corner-arrow" />
-        </div>
-      </div>
-
-      <!-- LEFT -->
-      <div class="side left">
-        <div class="cell country-cell">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[3].img" />
-            <p class="country-name">{{ monopoly.blocks[3].title }}</p>
-          </div>
-        </div>
-
-        <div class="cell country-cell">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[4].img" />
-            <p class="country-name">{{ monopoly.blocks[4].title }}</p>
-          </div>
-        </div>
-
-        <div class="cell question-cell">
-          <div class="question-text">?</div>
-        </div>
-        <div class="cell country-cell">
-          <div class="country-content">
-            <img class="country-flag" :src="monopoly.blocks[5].img" />
-            <p class="country-name">{{ monopoly.blocks[5].title }}</p>
-          </div>
-        </div>
-
-        <div class="cell logo-cell">
-          <div class="logo-icon">
-            <IconLogo />
-          </div>
+      <div class="facts">
+        <div
+          v-for="({ title, descr }, i) in monopoly.facts"
+          :key="i"
+          class="fact"
+          :class="{ active: activeKey2 === i }"
+        >
+          <p class="fact-title b2">{{ title }}</p>
+          <p class="fact-descr p4">{{ descr }}</p>
         </div>
       </div>
     </div>
@@ -153,150 +278,91 @@
 </template>
 
 <script setup lang="ts">
-const monopoly = {
-  facts: [
-    {
-      title: "RECORD-BREAKING REACH",
-      descr:
-        "The campaign generated over 3M organic impressions within the first 72 hours.",
-    },
+import type { MainPage } from "@/types/formatted/main-page"
 
-    {
-      title: "ENGAGEMENT ABOVE BENCHMARK",
-      descr:
-        "Engagement rate exceeded industry benchmarks by 240%, setting a new internal record.",
-    },
+const data = useState<MainPage>("all-data")
+const monopoly = data.value.monopoly
 
-    {
-      title: "MOBILE-FIRST IMPACT",
-      descr:
-        "Over 65% of traffic came from mobile users, highlighting strong cross-platform adaptability.",
-    },
-
-    {
-      title: "SURGE IN BRAND DEMAND",
-      descr:
-        "The activation sparked a 4x increase in branded search queries within one week.",
-    },
-  ],
-  blocks: [
-    {
-      title: "philippines",
-      img: "/images/flag.svg",
-      details: [
-        { number: "146%", text: "jump in participation" },
-        { number: "250M", text: "total reach growth" },
-        { number: "+24000", text: "new active users" },
-      ],
-    },
-    {
-      title: "germany",
-      img: "/images/flag.svg",
-      details: [
-        { number: "98%", text: "increase in engagement" },
-        { number: "180M", text: "campaign impressions" },
-        { number: "+18200", text: "new signups" },
-      ],
-    },
-    {
-      title: "brazil",
-      img: "/images/flag.svg",
-      details: [
-        { number: "172%", text: "audience growth" },
-        { number: "320M", text: "media exposure" },
-        { number: "+31200", text: "new participants" },
-      ],
-    },
-    {
-      title: "canada",
-      img: "/images/flag.svg",
-      details: [
-        { number: "121%", text: "conversion increase" },
-        { number: "95M", text: "organic views" },
-        { number: "+8600", text: "new registrations" },
-      ],
-    },
-    {
-      title: "japan",
-      img: "/images/flag.svg",
-      details: [
-        { number: "134%", text: "brand awareness lift" },
-        { number: "210M", text: "video views" },
-        { number: "+15400", text: "new users onboarded" },
-      ],
-    },
-    {
-      title: "australia",
-      img: "/images/flag.svg",
-      details: [
-        { number: "89%", text: "traffic growth" },
-        { number: "76M", text: "social impressions" },
-        { number: "+7300", text: "new accounts created" },
-      ],
-    },
-    {
-      title: "france",
-      img: "/images/flag.svg",
-      details: [
-        { number: "158%", text: "participation boost" },
-        { number: "140M", text: "digital exposure" },
-        { number: "+19400", text: "new subscribers" },
-      ],
-    },
-    {
-      title: "india",
-      img: "/images/flag.svg",
-      details: [
-        { number: "203%", text: "market expansion" },
-        { number: "540M", text: "content reach" },
-        { number: "+45200", text: "new active members" },
-      ],
-    },
-    {
-      title: "spain",
-      img: "/images/flag.svg",
-      details: [
-        { number: "111%", text: "engagement rise" },
-        { number: "88M", text: "ad impressions" },
-        { number: "+9700", text: "new customers" },
-      ],
-    },
-    {
-      title: "italy",
-      img: "/images/flag.svg",
-      details: [
-        { number: "129%", text: "brand interaction growth" },
-        { number: "102M", text: "campaign reach" },
-        { number: "+11300", text: "new leads generated" },
-      ],
-    },
-    {
-      title: "mexico",
-      img: "/images/flag.svg",
-      details: [
-        { number: "167%", text: "user engagement boost" },
-        { number: "190M", text: "total impressions" },
-        { number: "+22100", text: "new app installs" },
-      ],
-    },
-    {
-      title: "uk",
-      img: "/images/flag.svg",
-      details: [
-        { number: "140%", text: "conversion uplift" },
-        { number: "150M", text: "online reach" },
-        { number: "+16800", text: "new verified users" },
-      ],
-    },
-  ],
-}
+const activeKey = ref<number | null>(null)
+const activeKey2 = ref<number | null>(null)
 </script>
 
 <style scoped lang="scss">
 .board {
   background: #000;
   padding: 0.5rem 0.5rem 21rem;
+  position: relative;
+}
+.board-wrap {
+  position: relative;
+}
+
+.details,
+.facts {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 0;
+  padding-right: 0.5rem;
+  transform: translateY(-50%);
   display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  text-align: right;
+}
+
+.mask {
+  overflow: hidden;
+}
+.mask-line {
+  transform: translateY(110%);
+  transition: transform 1s var(--default-ease);
+  will-change: transform;
+}
+.info,
+.fact {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.info.active .mask-line {
+  transform: translateY(0);
+}
+
+.info-number {
+  color: var(--c-red);
+  font-family: var(--f-roboto);
+  font-size: 14.875rem;
+  font-weight: 300;
+  font-variation-settings:
+    "wght" 300,
+    "wdth" 50,
+    "grad" 0;
+  line-height: 90%;
+  letter-spacing: -0.486rem;
+  text-transform: capitalize;
+}
+.info-text {
+  font-family: var(--f-peta-med);
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.0522rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.fact {
+  gap: 0.75rem;
+  opacity: 0;
+  color: #fff;
+  transition: all 0.4s var(--default-ease);
+  width: 12.5rem;
+}
+.fact.active {
+  opacity: 1;
 }
 
 .board-inner {
@@ -588,5 +654,21 @@ const monopoly = {
 }
 .bottom .c2:after {
   background: #fef200;
+}
+
+.monopoly-decor {
+  width: 51.5rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+.monopoly-logo {
+  width: 20.3125rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 </style>
