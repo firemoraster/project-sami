@@ -1,19 +1,21 @@
 <template>
-  <span class="tip b3" data-tip>
+  <span ref="tipRef" class="tip b3" data-tip>
     {{ text }}
 
-    <img class="coin" src="/images/coin.png" alt="">
+    <img ref="coinRef" class="coin" src="/images/coin.png" alt="" />
   </span>
 </template>
 
 <script setup lang="ts">
+const text = ref("")
 
-const text = ref<string>("")
-
-const isLeft = ref<boolean | undefined>(false)
+const isLeft = ref(false)
 
 const cursorX = ref(0)
 const cursorY = ref(0)
+
+const tipRef = ref<HTMLElement | null>(null)
+const coinRef = ref<HTMLElement | null>(null)
 
 function handleCursorMove(e: MouseEvent) {
   cursorX.value = e.clientX
@@ -26,30 +28,40 @@ function handleScroll() {
 }
 
 function updateTipPosition() {
-  const tip = document.querySelector("[data-tip]")
+  const tip = tipRef.value
+  const coin = coinRef.value
+  if (!tip || !coin) return
 
   const elementUnderCursor = document.elementFromPoint(
     cursorX.value,
     cursorY.value
   )
+  if (!elementUnderCursor) return
 
-  const element = elementUnderCursor?.closest("[data-area-for-tip]")
-  if (element) {
-    text.value = element.getAttribute("data-area-for-tip")!
+  const areaElement = elementUnderCursor.closest(
+    "[data-area-for-tip]"
+  ) as HTMLElement | null
 
-    isLeft.value = elementUnderCursor?.hasAttribute("data-tip-left")
-    isLeft.value = elementUnderCursor?.hasAttribute("data-tip-left")
-
-    if (elementUnderCursor?.hasAttribute("data-tip-coin")) {
-      gsap.set(".tip .coin", { opacity: 1 })
-    }
-
-    gsap.to(tip, { opacity: 1, duration: 0.2 })
-  } else {
-    gsap.set(".tip .coin", { opacity: 0 })
-    gsap.to(tip, { opacity: 0, duration: 0.2 })
+  if (!areaElement) {
+    gsap.set(coin, { opacity: 0 })
+    gsap.to(tip, { autoAlpha: 0, duration: 0.2, overwrite: "auto" })
     return
   }
+
+  text.value = areaElement.getAttribute("data-area-for-tip") || ""
+
+  const leftElement = elementUnderCursor.closest("[data-tip-left]")
+  const coinElement = elementUnderCursor.closest("[data-tip-coin]")
+
+  isLeft.value = !!leftElement
+
+  gsap.set(coin, { opacity: coinElement ? 1 : 0 })
+
+  gsap.to(tip, {
+    autoAlpha: 1,
+    duration: 0.2,
+    overwrite: "auto",
+  })
 
   const x = isLeft.value ? cursorX.value - 10 : cursorX.value + 10
   const y = cursorY.value
@@ -75,26 +87,29 @@ onUnmounted(() => {
   display: inline-flex;
   padding: var(--2) var(--8) var(--4);
   border-radius: 2.25rem;
-  background: var(--c-yellow);
+  background: #efe81b;
   position: fixed;
   top: -1.5rem;
-  left: 0px;
+  left: 0;
   z-index: var(--z-tip);
   opacity: 0;
+  visibility: hidden;
 
   @include mobile {
     display: none;
   }
 }
+
 .tip._red {
   background: var(--c-red);
   color: var(--c-white);
 }
+
 .coin {
   opacity: 0;
   pointer-events: none;
   position: absolute;
   left: -2rem;
-  top: .3125rem;
+  top: 0.3125rem;
 }
 </style>

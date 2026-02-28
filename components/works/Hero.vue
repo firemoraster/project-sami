@@ -16,8 +16,8 @@
               v-for="({ title }, s) in list"
               :key="s"
               class="subitem"
+              :class="{ active: activeKey === `${i}-${s}` }"
               @mouseenter="activeKey = `${i}-${s}`"
-              @mouseleave="activeKey = null"
             >
               <p class="p3">{{ title }}</p>
             </div>
@@ -71,7 +71,7 @@ const data = useState<MainPage>("all-data")
 const heroData = data.value.projects.hero
 const projectsData = data.value.projects.data
 
-const activeKey = ref<string | null>(null)
+const activeKey = ref("0-0")
 
 onMounted(async () => {
   await nextTick()
@@ -81,7 +81,7 @@ onMounted(async () => {
 const animateSectionTransition = () => {
   sectionTransition({
     title: ".works .hero .title",
-    container: ".services .info .sticky",
+    container: ".monopoly-sect",
     trigger: ".works .hero",
   })
 }
@@ -131,6 +131,10 @@ const animateSectionTransition = () => {
   cursor: pointer;
   padding: 0.25rem 0;
   transition: all 0.4s var(--default-ease);
+}
+.subitem.active {
+  background: var(--c-white);
+  color: var(--c-black);
 }
 @include hover {
   .subitem:hover {

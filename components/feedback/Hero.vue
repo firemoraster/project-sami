@@ -36,7 +36,7 @@ onMounted(async () => {
 const animateSectionTransition = () => {
   sectionTransition({
     title: ".feedback .hero .title",
-    container: ".works section.items",
+    container: ".works section.hero",
     trigger: ".feedback .hero",
   })
 }

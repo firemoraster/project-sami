@@ -389,6 +389,7 @@ const initErase = () => {
   margin-left: auto;
   margin-right: 7.1875rem;
   margin-top: 10.0625rem;
+  color: var(--c-black);
 }
 .photo-3 {
   width: 44.75rem;

@@ -98,7 +98,6 @@
             <span class="title-2-mask">{{ detailsData.title2[8] }}</span>
           </span>
         </span>
-
       </h2>
     </div>
 
@@ -112,7 +111,7 @@
       </div>
       <div class="sticky">
         <div class="photos-wrap">
-          <div class="blur" />
+          <!-- <div class="blur" /> -->
           <div class="photos">
             <img
               v-for="(img, i) in detailsData.photos"
@@ -250,13 +249,6 @@ const animContent = () => {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
     }
   )
-  tl.to(
-    ".about .details .blur",
-    {
-      opacity: 1,
-    },
-    "<80%"
-  )
 
   const iconContainer = document.querySelector(".about .details .logo-2")
 
@@ -299,20 +291,11 @@ const animContent = () => {
     "<"
   )
 
-  tl.to(
-    ".about .details .content", {
-      y: 0,
-      yPercent: 0,
-      duration: 1,
+  tl.to(".about .details .content", {
+    y: 0,
+    yPercent: 0,
+    duration: 1,
   })
-
-  tl.to(
-    ".about .details .blur",
-    {
-      backgroundColor: "rgba(0,0,0,0.61)",
-    },
-    "<"
-  )
 
   tl.to(
     {},
@@ -344,7 +327,7 @@ const animContent = () => {
 <style scoped lang="scss">
 .details {
   padding: var(--24) var(--8) 0;
-  background: #003F41;
+  background: #003f41;
   color: var(--c-white);
   position: relative;
 
@@ -359,7 +342,7 @@ const animContent = () => {
   width: 100%;
   left: 0;
   bottom: 100%;
-  background: linear-gradient(var(--c-white), #003F41);
+  background: linear-gradient(var(--c-white), #003f41);
   margin-bottom: -8rem;
 }
 .title {

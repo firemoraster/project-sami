@@ -1,6 +1,11 @@
 <template>
   <div class="popup services-popup">
-    <div v-if="isDesktop" class="learn-more-wrap" @click="clickLearnMore" @mouseenter="playHoverSound">
+    <div
+      v-if="isDesktop"
+      class="learn-more-wrap"
+      @click="clickLearnMore"
+      @mouseenter="playHoverSound"
+    >
       <div class="learn-more b2">
         <span>{{ $t("learn_more") }}</span>
         <span>
@@ -32,18 +37,16 @@
 
       <div class="popup-title">
         <h4 class="h4">{{ $t("subservices") }}</h4>
-        <sub class="b3">{{
+        <!-- <sub class="b3">{{
           servicesData.type[index].subServices.length + 1
-        }}</sub>
+        }}</sub> -->
       </div>
 
       <p class="popup-descr p4">
         {{ servicesData.type[index].description2 }}
       </p>
 
-      <p class="popup-info p4">
-        - {{ $t("optional_service") }}
-      </p>
+      <p class="popup-info p4">- {{ $t("optional_service") }}</p>
 
       <div class="popup-items-wrap">
         <div class="popup-items" data-lenis-prevent>
@@ -68,11 +71,7 @@
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    d="M5 0V10"
-                    stroke="black"
-                    stroke-width="1.5"
-                  />
+                  <path d="M5 0V10" stroke="black" stroke-width="1.5" />
                   <path
                     d="M10 5L-2.38419e-07 5"
                     stroke="black"
@@ -104,7 +103,7 @@ import type { MainPage } from "@/types/formatted/main-page"
 const data = useState<MainPage>("all-data")
 const servicesData = data.value.services
 
-const props = defineProps<{ index: number, activePopupIndex: number }>()
+const props = defineProps<{ index: number; activePopupIndex: number }>()
 
 const emit = defineEmits(["openModal", "closeModal"])
 
@@ -118,11 +117,10 @@ const activeIndex = ref<number | null>(null)
 
 const clickLearnMore = () => {
   playClickSound()
-  emit('openModal', props.index)
+  emit("openModal", props.index)
 }
 
 const toggleAccordion = (index: number) => {
-
   playClickSound()
 
   const currentPopup =
@@ -136,7 +134,7 @@ const toggleAccordion = (index: number) => {
       height: 0,
     })
     gsap.to(decorPath, {
-      opacity: 1
+      opacity: 1,
     })
     activeIndex.value = null
   } else {
@@ -145,7 +143,7 @@ const toggleAccordion = (index: number) => {
         height: 0,
       })
       gsap.to(decor[activeIndex.value].querySelectorAll("path")[0], {
-        opacity: 1
+        opacity: 1,
       })
     }
 
@@ -153,7 +151,7 @@ const toggleAccordion = (index: number) => {
       height: "auto",
     })
     gsap.to(decorPath, {
-      opacity: 0
+      opacity: 0,
     })
     activeIndex.value = index
   }
@@ -374,12 +372,12 @@ const toggleAccordion = (index: number) => {
 }
 .popup-item-content div:deep(li:after) {
   content: "";
-  width: .25rem;
-  height: .25rem;
+  width: 0.25rem;
+  height: 0.25rem;
   background: var(--c-black);
   border-radius: 100%;
   position: absolute;
-  top: .375rem;
+  top: 0.375rem;
   left: 0;
 }
 .popup-item-title p {

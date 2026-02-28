@@ -60,54 +60,85 @@ const animateTitleOnScroll = () => {
     },
   })
 
-
   tl.to(".fixed-title", {
     scaleY: 0,
     yPercent: 12,
-    duration: 1.5
-  })
-
-  tl.to(".fixed-logo", {
-    scaleY: 0,
-    yPercent: -20,
     duration: 1.5,
-  }, "<")
-
-  tl.from(".intro .hero .description .col-1", {
-    opacity: 0,
-    duration: 0.3,
-  }, "-=1.3")
-
-  tl.from(".intro .hero .description .col-2", {
-    opacity: 0,
-    duration: 0.3,
-  }, "-=0.9")
-  tl.from(".intro .hero .description .col-3", {
-    opacity: 0,
-    duration: 0.3,
-  }, "-=0.6")
-  tl.from(".intro .hero .description .col-4", {
-    opacity: 0,
-    duration: 0.3,
-  }, "-=0.3")
-  tl.from(".intro .hero .description .col-5", {
-    opacity: 0,
-    duration: 0.3,
   })
 
-  tl.to("footer.footer .name", {
-    opacity: 1,
-    duration: 0.3,
-  }, "<")
+  tl.to(
+    ".fixed-logo",
+    {
+      scaleY: 0,
+      yPercent: -20,
+      duration: 1.5,
+    },
+    "<"
+  )
 
-  tl.to(".intro .hero .description", {
-    yPercent: -65,
-    duration: 2,
-  }, "<")
-  tl.from(".intro .hero .description-2", {
-    opacity: 0,
-    duration: 0.2,
-  }, "<40%")
+  tl.from(
+    ".intro .hero .description .col-1",
+    {
+      opacity: 0,
+      duration: 0.3,
+    },
+    "-=1.3"
+  )
+
+  tl.from(
+    ".intro .hero .description .col-2",
+    {
+      opacity: 0,
+      duration: 0.3,
+    },
+    "-=0.9"
+  )
+  tl.from(
+    ".intro .hero .description .col-3",
+    {
+      opacity: 0,
+      duration: 0.3,
+    },
+    "-=0.6"
+  )
+  tl.from(
+    ".intro .hero .description .col-4",
+    {
+      opacity: 0,
+      duration: 0.3,
+    },
+    "-=0.3"
+  )
+  // tl.from(".intro .hero .description .col-5", {
+  //   opacity: 0,
+  //   duration: 0.3,
+  // })
+
+  tl.to(
+    "footer.footer .name",
+    {
+      opacity: 1,
+      duration: 0.3,
+    },
+    "<"
+  )
+
+  tl.to(
+    ".intro .hero .description",
+    {
+      yPercent: -65,
+      duration: 2,
+    },
+    "<"
+  )
+  tl.from(
+    ".intro .hero .description-2",
+    {
+      opacity: 0,
+      duration: 0.2,
+    },
+    "<40%"
+  )
   tl.set(".fixed-title", { zIndex: 100 })
 }
 </script>

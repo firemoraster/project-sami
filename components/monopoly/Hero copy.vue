@@ -289,27 +289,15 @@ const activeKey2 = ref<number | null>(null)
 
 <style scoped lang="scss">
 .board {
-  --base-side: 50.125rem;
-  --gap: 0.125rem;
-  --side: min(calc(100vh - 4rem), 100vw);
-  --scale: calc(var(--side) / var(--base-side));
-  --cell: calc((var(--side) - (6 * var(--gap))) / 8.22916);
-  --corner: calc(var(--cell) * 1.61458);
-
   background: #000;
   padding: 0.5rem 0.5rem 21rem;
   position: relative;
-
   @include mobile {
     display: none;
   }
 }
-
 .board-wrap {
   position: relative;
-  min-height: calc(100vh - 1rem);
-  display: flex;
-  align-items: center;
 }
 
 .details,
@@ -329,28 +317,19 @@ const activeKey2 = ref<number | null>(null)
 .mask {
   overflow: hidden;
 }
-
 .mask-line {
   transform: translateY(110%);
   transition: transform 1s var(--default-ease);
   will-change: transform;
 }
-
 .info,
 .fact {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  right: 0;
-  padding-right: 0.5rem;
-  transform: translateY(-50%) scale(var(--scale));
-  transform-origin: right center;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  text-align: right;
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
-
 .info.active .mask-line {
   transform: translateY(0);
 }
@@ -368,7 +347,6 @@ const activeKey2 = ref<number | null>(null)
   letter-spacing: -0.486rem;
   text-transform: capitalize;
 }
-
 .info-text {
   font-family: var(--f-peta-med);
   font-size: 1.375rem;
@@ -386,12 +364,16 @@ const activeKey2 = ref<number | null>(null)
   transition: all 0.4s var(--default-ease);
   width: 12.5rem;
 }
-
 .fact.active {
   opacity: 1;
 }
 
 .board-inner {
+  --corner: 9.6875rem;
+  --cell: 6rem;
+  --gap: 0.125rem; /* 2px */
+  --side: calc(var(--corner) * 2 + var(--cell) * 5 + var(--gap) * 6);
+
   position: relative;
   width: var(--side);
   height: var(--side);
@@ -409,7 +391,7 @@ const activeKey2 = ref<number | null>(null)
 
 .cell,
 .corner {
-  border: calc(0.0625rem * var(--scale)) solid #fff;
+  border: 0.0625rem solid #fff;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -419,17 +401,20 @@ const activeKey2 = ref<number | null>(null)
   height: var(--corner);
   display: grid;
   place-items: center;
+  border: 0.0625rem solid #fff;
+  box-sizing: border-box;
   position: relative;
 }
 
 .corner-text {
+  /* НЕ absolute */
   transform: rotate(var(--corner-rot, 0deg));
 }
 
 .corner-arrow {
-  width: calc(4.6875rem * var(--scale));
+  width: 4.6875rem;
   position: absolute;
-  bottom: calc(1rem * var(--scale));
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -437,7 +422,6 @@ const activeKey2 = ref<number | null>(null)
 .top .corner--start {
   --corner-rot: -225deg;
 }
-
 .top .corner--end {
   --corner-rot: 225deg;
 }
@@ -445,11 +429,10 @@ const activeKey2 = ref<number | null>(null)
 .bottom .corner--start {
   --corner-rot: 45deg;
 }
-
 .bottom .corner--end {
   --corner-rot: -45deg;
   color: red;
-  font-size: calc(3.1823rem * var(--scale));
+  font-size: 3.1823rem;
   font-family: var(--f-peta-med);
 }
 
@@ -459,7 +442,7 @@ const activeKey2 = ref<number | null>(null)
   height: var(--corner);
 }
 
-/* vertical */
+/* вертикальні сторони — тільки розміри клітинки + напрямок */
 .left,
 .right {
   flex-direction: column;
@@ -500,7 +483,7 @@ const activeKey2 = ref<number | null>(null)
   }
 }
 
-/* question cell */
+// question cell
 .question-cell {
   display: flex;
   align-items: center;
@@ -512,25 +495,22 @@ const activeKey2 = ref<number | null>(null)
 .question-text {
   color: red;
   font-family: var(--f-peta-red);
-  font-size: calc(3.5653rem * var(--scale));
+  font-size: 3.5653rem;
 }
-
 @include hover {
   .question-cell:hover .question-text {
     color: #000;
   }
 }
-
 .country-cell {
   position: relative;
   cursor: pointer;
   transition: all 0.8s var(--default-ease);
 }
-
 .country-cell:after {
   content: "";
   position: absolute;
-  border: calc(0.0625rem * var(--scale)) solid #fff;
+  border: 0.0625rem solid #fff;
   z-index: 3;
 }
 
@@ -539,35 +519,32 @@ const activeKey2 = ref<number | null>(null)
   align-items: center;
   justify-content: center;
 }
-
 .logo-icon {
-  width: calc(2.75rem * var(--scale));
+  width: 2.75rem;
 }
 
 .country-name {
-  font-size: calc(0.625rem * var(--scale));
+  font-size: 0.625rem;
   line-height: normal;
   font-family: var(--f-peta-med);
 }
-
 .country-content {
   display: flex;
   flex-direction: column;
-  gap: calc(1.875rem * var(--scale));
+  gap: 1.875rem;
   align-items: center;
   position: absolute;
 }
-
 .country-flag {
-  width: calc(3.25rem * var(--scale));
+  width: 3.25rem;
 }
 
-/* top */
+// top
 .top .country-cell:after {
-  bottom: calc(-0.0625rem * var(--scale));
-  left: calc(-0.0625rem * var(--scale));
-  height: calc(2.0625rem * var(--scale));
-  width: calc(100% + (0.125rem * var(--scale)));
+  bottom: -0.0625rem;
+  left: -0.0625rem;
+  height: 2.0625rem;
+  width: calc(100% + 0.125rem);
   background: red;
 }
 
@@ -578,24 +555,23 @@ const activeKey2 = ref<number | null>(null)
 }
 
 .top .country-content {
-  top: calc(0.75rem * var(--scale));
+  top: 0.75rem;
   left: 0;
   width: 100%;
 }
-
 @include hover {
   .top .country-cell:hover,
   .top .question-cell:hover {
-    transform: translateY(calc(1.125rem * var(--scale)));
+    transform: translateY(1.125rem);
   }
 }
 
-/* right */
+// right
 .right .country-cell:after {
-  left: calc(-0.0625rem * var(--scale));
-  top: calc(-0.0625rem * var(--scale));
-  width: calc(2.0625rem * var(--scale));
-  height: calc(100% + (0.125rem * var(--scale)));
+  left: -0.0625rem;
+  top: -0.0625rem;
+  width: 2.0625rem;
+  height: calc(100% + 0.125rem);
   background: #d93a96;
 }
 
@@ -606,23 +582,22 @@ const activeKey2 = ref<number | null>(null)
 }
 
 .right .country-content {
-  right: calc(0.75rem * var(--scale));
+  right: 0.75rem;
   height: 100%;
 }
-
 @include hover {
   .right .country-cell:hover,
   .right .question-cell:hover {
-    transform: translateX(calc(-1.125rem * var(--scale)));
+    transform: translateX(-1.125rem);
   }
 }
 
-/* left */
+// left
 .left .country-cell:after {
-  right: calc(-0.0625rem * var(--scale));
-  top: calc(-0.0625rem * var(--scale));
-  width: calc(2.0625rem * var(--scale));
-  height: calc(100% + (0.125rem * var(--scale)));
+  right: -0.0625rem;
+  top: -0.0625rem;
+  width: 2.0625rem;
+  height: calc(100% + 0.125rem);
   background: red;
 }
 
@@ -637,14 +612,13 @@ const activeKey2 = ref<number | null>(null)
 }
 
 .left .country-content {
-  left: calc(0.75rem * var(--scale));
+  left: 0.75rem;
   height: 100%;
 }
-
 @include hover {
   .left .country-cell:hover,
   .left .question-cell:hover {
-    transform: translateX(calc(1.125rem * var(--scale)));
+    transform: translateX(1.125rem);
   }
 }
 
@@ -652,53 +626,48 @@ const activeKey2 = ref<number | null>(null)
   background: #0072bb;
 }
 
-/* bottom */
+// bottom
 .bottom .logo-icon {
-  width: calc(4.25rem * var(--scale));
+  width: 4.25rem;
 }
-
 .bottom .question-text {
   color: #fff;
 }
-
 .bottom .country-cell:after {
-  left: calc(-0.0625rem * var(--scale));
-  top: calc(-0.0625rem * var(--scale));
-  width: calc(100% + (0.125rem * var(--scale)));
-  height: calc(2.0625rem * var(--scale));
+  left: -0.0625rem;
+  top: -0.0625rem;
+  width: calc(100% + 0.125rem);
+  height: 2.0625rem;
   background: #d93a96;
 }
-
 .bottom .country-content {
-  bottom: calc(0.75rem * var(--scale));
+  bottom: 0.75rem;
   width: 100%;
 }
 
 @include hover {
   .bottom .country-cell:hover,
   .bottom .question-cell:hover {
-    transform: translateY(calc(-1.125rem * var(--scale)));
+    transform: translateY(-1.125rem);
   }
 }
 
 .bottom .c1:after {
   background: #955436;
 }
-
 .bottom .c2:after {
   background: #fef200;
 }
 
 .monopoly-decor {
-  width: calc(51.5rem * var(--scale));
+  width: 51.5rem;
   position: absolute;
   top: 0;
   right: 0;
   pointer-events: none;
 }
-
 .monopoly-logo {
-  width: calc(20.3125rem * var(--scale));
+  width: 20.3125rem;
   position: absolute;
   top: 50%;
   left: 50%;
