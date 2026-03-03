@@ -179,7 +179,7 @@ const animateSectionTransition = () => {
 .info-number {
   color: var(--c-red);
   font-family: var(--f-roboto);
-  font-size: 20.25rem;
+  font-size: 15rem;
   font-weight: 300;
   font-variation-settings:
     "wght" 300,

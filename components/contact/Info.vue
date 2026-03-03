@@ -60,31 +60,9 @@ const isContactPopupOpen = useState<boolean>("is-contact-popup-open")
 onMounted(async () => {
   await nextTick()
 
-  moveGradientOnScroll()
   animateText()
   showFooterAndScaleLogo()
 })
-const moveGradientOnScroll = () => {
-  const tl = gsap.timeline({
-    defaults: {
-      ease: "none",
-    },
-    scrollTrigger: {
-      scrub: true,
-      trigger: ".contact .info",
-      start: "top top",
-      end: "bottom bottom",
-    },
-  })
-
-  tl.to(
-    ".height-anim",
-    {
-      flex: 0,
-    },
-    "<"
-  )
-}
 
 const showFooterAndScaleLogo = () => {
   const tl = gsap.timeline({
@@ -120,8 +98,7 @@ const animateText = () => {
     },
     {
       opacity: 1,
-      stagger: 0.3,
-      delay: 0.125,
+      stagger: 0.05,
       duration: 0.8,
       clearProps: "all",
       scrollTrigger: {
@@ -135,7 +112,6 @@ const animateText = () => {
 
 <style scoped lang="scss">
 .info {
-  height: 300vh;
   position: relative;
 
   @include mobile {
