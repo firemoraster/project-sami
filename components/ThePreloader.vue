@@ -324,7 +324,7 @@ function animContent() {
 
   tl.to(fixedTitleName, { duration: 1.5, scaleY: 1 }, "<")
   tl.to(gradient, { duration: 1.5, opacity: 1 }, "<")
-  tl.to(preloader, { opacity: 0 })
+  tl.to(preloader, { opacity: 0 }, "<")
   tl.to(fixedTitleText, { y: 0 }, "<")
   tl.from(header, { yPercent: -150 }, "<")
   tl.from(footer, { yPercent: 150 }, "<")

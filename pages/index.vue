@@ -109,4 +109,7 @@ useSeoMeta(data.value.seo)
 .pocket-2 {
   right: 0.5rem;
 }
+.contact {
+  background: #000;
+}
 </style>

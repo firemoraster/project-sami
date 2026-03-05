@@ -60,7 +60,6 @@ const isContactPopupOpen = useState<boolean>("is-contact-popup-open")
 onMounted(async () => {
   await nextTick()
 
-  animateText()
   showFooterAndScaleLogo()
 })
 
@@ -88,10 +87,8 @@ const showFooterAndScaleLogo = () => {
     },
     "<"
   )
-}
 
-const animateText = () => {
-  gsap.fromTo(
+  tl.fromTo(
     ".contact .info .title-mask",
     {
       opacity: 0,
@@ -105,7 +102,8 @@ const animateText = () => {
         trigger: ".contact .info .title-trigger",
         start: "top bottom",
       },
-    }
+    },
+    "<"
   )
 }
 </script>
@@ -113,6 +111,7 @@ const animateText = () => {
 <style scoped lang="scss">
 .info {
   position: relative;
+  height: 200vh;
 
   @include mobile {
     display: none;
@@ -129,7 +128,7 @@ const animateText = () => {
   padding-bottom: 40vh;
   display: flex;
   flex-direction: column;
-  background: var(--c-black);
+  margin-top: -33rem;
 }
 .title {
   display: flex;
@@ -156,7 +155,7 @@ const animateText = () => {
 }
 .btn-wrap-text {
   width: 30rem;
-  color: white;
+  color: var(--c-red);
 }
 .btn-wrap-text:deep(p) {
   margin-bottom: 1rem;

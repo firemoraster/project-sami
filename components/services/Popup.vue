@@ -294,24 +294,24 @@ const toggleAccordion = (index: number) => {
   overflow: hidden;
   margin-bottom: var(--4);
 }
-.popup-items-wrap:after,
-.popup-items-wrap:before {
-  content: "";
-  position: absolute;
-  height: 50%;
-  width: 100%;
-  left: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-.popup-items-wrap:after {
-  top: 0;
-  background: linear-gradient(var(--c-white), transparent);
-}
-.popup-items-wrap:before {
-  bottom: 0;
-  background: linear-gradient(transparent, var(--c-white));
-}
+// .popup-items-wrap:after,
+// .popup-items-wrap:before {
+//   content: "";
+//   position: absolute;
+//   height: 50%;
+//   width: 100%;
+//   left: 0;
+//   z-index: 2;
+//   pointer-events: none;
+// }
+// .popup-items-wrap:after {
+//   top: 0;
+//   background: linear-gradient(var(--c-white), transparent);
+// }
+// .popup-items-wrap:before {
+//   bottom: 0;
+//   background: linear-gradient(transparent, var(--c-white));
+// }
 .popup-btn:deep(.btn-default),
 .popup-btn button {
   width: 100%;
