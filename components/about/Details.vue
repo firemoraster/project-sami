@@ -68,6 +68,8 @@
           <span class="title-2-word">
             <span class="title-2-mask">{{ detailsData.title2[1] }}</span>
           </span>
+        </span>
+        <span class="title-2-row">
           <span class="title-2-word">
             <span class="title-2-mask">{{ detailsData.title2[2] }}</span>
           </span>
@@ -94,6 +96,8 @@
           <span class="title-2-word">
             <span class="title-2-mask">{{ detailsData.title2[7] }}</span>
           </span>
+        </span>
+        <span class="title-2-row">
           <span class="title-2-word">
             <span class="title-2-mask">{{ detailsData.title2[8] }}</span>
           </span>
